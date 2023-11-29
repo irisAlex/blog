@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/fluid.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,21 +19,21 @@
     <meta name="description" content="架构分层架构分层一定要这么做吗？在系统从 0 到 1 的阶段，为了让系统快速上线，我们通常是不考虑分层的。但是随着业务越来越复杂，大量的代码纠缠在一起，会出现逻辑不清晰、各模块相互依赖、代码扩展性差、改动一处就牵一发而动全身等问题。 这时，对系统进行分层就会被提上日程，那么我们要如何对架构进行分层？架构分层和高并发架构设计又有什么关系呢？本节课，我将带你寻找答案。 什么是分层架构 软件架构分层在软">
 <meta property="og:type" content="article">
 <meta property="og:title" content="系统架构分层">
-<meta property="og:url" content="http://example.com/2023/11/29/hello-world/index.html">
+<meta property="og:url" content="https://irisalex.github.io/blog/2023/11/29/hello-world/index.html">
 <meta property="og:site_name" content="Iris.Alex">
 <meta property="og:description" content="架构分层架构分层一定要这么做吗？在系统从 0 到 1 的阶段，为了让系统快速上线，我们通常是不考虑分层的。但是随着业务越来越复杂，大量的代码纠缠在一起，会出现逻辑不清晰、各模块相互依赖、代码扩展性差、改动一处就牵一发而动全身等问题。 这时，对系统进行分层就会被提上日程，那么我们要如何对架构进行分层？架构分层和高并发架构设计又有什么关系呢？本节课，我将带你寻找答案。 什么是分层架构 软件架构分层在软">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/images/pasted-22.png">
-<meta property="og:image" content="http://example.com/images/pasted-23.png">
-<meta property="og:image" content="http://example.com/images/pasted-24.png">
-<meta property="og:image" content="http://example.com/images/pasted-25.png">
-<meta property="og:image" content="http://example.com/images/pasted-27.png">
-<meta property="og:image" content="http://example.com/images/pasted-28.png">
+<meta property="og:image" content="https://irisalex.github.io/blog/images/pasted-22.png">
+<meta property="og:image" content="https://irisalex.github.io/blog/images/pasted-23.png">
+<meta property="og:image" content="https://irisalex.github.io/blog/images/pasted-24.png">
+<meta property="og:image" content="https://irisalex.github.io/blog/images/pasted-25.png">
+<meta property="og:image" content="https://irisalex.github.io/blog/images/pasted-27.png">
+<meta property="og:image" content="https://irisalex.github.io/blog/images/pasted-28.png">
 <meta property="article:published_time" content="2023-11-29T11:18:20.000Z">
 <meta property="article:modified_time" content="2023-11-29T11:20:14.708Z">
 <meta property="article:author" content="Iris.Alex">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/images/pasted-22.png">
+<meta name="twitter:image" content="https://irisalex.github.io/blog/images/pasted-22.png">
   
   
   
@@ -61,12 +61,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+<link  rel="stylesheet" href="/blog/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
   
 
 
@@ -75,15 +75,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"irisalex.github.io","root":"/blog/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
   
 
 
@@ -100,7 +100,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="/blog/">
       <strong>Iris.Alex</strong>
     </a>
 
@@ -119,7 +119,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
+              <a class="nav-link" href="/blog/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
                 <span>Home</span>
               </a>
@@ -131,7 +131,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
+              <a class="nav-link" href="/blog/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>Archives</span>
               </a>
@@ -143,7 +143,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
+              <a class="nav-link" href="/blog/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
                 <span>Categories</span>
               </a>
@@ -155,7 +155,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
+              <a class="nav-link" href="/blog/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>Tags</span>
               </a>
@@ -167,7 +167,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
+              <a class="nav-link" href="/blog/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>About</span>
               </a>
@@ -197,7 +197,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/blog/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -284,7 +284,7 @@
 <h3 id="什么是分层架构"><a href="#什么是分层架构" class="headerlink" title="什么是分层架构"></a><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84" title="什么是分层架构"></a>什么是分层架构</h3><hr>
 <p>软件架构分层在软件工程中是一种常见的设计方式，它是将整体系统拆分成 N 个层次，每个层次有独立的职责，多个层次协同提供完整的功能。</p>
 <p>我们在刚刚成为程序员的时候，会被「教育」说系统的设计要是「MVC」（Model-View-Controller）架构。它将整体的系统分成了 Model（模型），View（视图）和 Controller（控制器）三个层次，也就是将用户视图和业务处理隔离开，并且通过控制器连接起来，很好地实现了 表现和逻辑的解耦，是一种标准的软件分层架构。</p>
-<p><img src="/images/pasted-22.png" srcset="/img/loading.gif" lazyload alt="upload successful"> </p>
+<p><img src="/blog/images/pasted-22.png" srcset="/blog/img/loading.gif" lazyload alt="upload successful"> </p>
 <p>另外一种常见的分层方式是将整体架构分为表现层、逻辑层和数据访问层：</p>
 <ul>
 <li>表现层，顾名思义嘛，就是展示数据结果和接受用户指令的，是最靠近用户的一层；</li>
@@ -292,9 +292,9 @@
 <li>数据访问层则是主要处理和存储之间的交互。</li>
 </ul>
 <p>这是在架构上最简单的一种分层方式。其实，我们在不经意间已经按照三层架构来做系统分层设计了，比如在构建项目的时候，我们通常会建立三个目录：Web、Service 和 Dao，它们分别对应了表现层、逻辑层还有数据访问层。</p>
-<p><img src="/images/pasted-23.png" srcset="/img/loading.gif" lazyload alt="upload successful"> </p>
+<p><img src="/blog/images/pasted-23.png" srcset="/blog/img/loading.gif" lazyload alt="upload successful"> </p>
 <p>除此之外，如果我们稍加留意，就可以发现很多的分层的例子。比如我们在大学中学到的 OSI 网络模型，它把整个网络分了七层，自下而上分别是物理层、数据链路层、网络层、传输层、会话层、表示层和应用层。</p>
-<p><img src="/images/pasted-24.png" srcset="/img/loading.gif" lazyload alt="upload successful"> </p>
+<p><img src="/blog/images/pasted-24.png" srcset="/blog/img/loading.gif" lazyload alt="upload successful"> </p>
 <p>工作中经常能用到 TCP&#x2F;IP 协议，它把网络简化成了四层(如上图右侧)，即链路层、网络层、传输层和应用层。每一层各司其职又互相帮助，网络层负责端到端的寻址和建立连接，传输层负责端到端的数据传输等，同时呢相邻两层还会有数据的交互。这样可以 隔离关注点，让不同的层专注做不同的事情。</p>
 <p>Linux 文件系统也是分层设计的，从下图你可以清晰地看出文件系统的层次。</p>
 <ul>
@@ -307,7 +307,7 @@
 <li><p>然后就是不同类型的磁盘了。</p>
 </li>
 </ul>
-<p><img src="/images/pasted-25.png" srcset="/img/loading.gif" lazyload alt="upload successful"> </p>
+<p><img src="/blog/images/pasted-25.png" srcset="/blog/img/loading.gif" lazyload alt="upload successful"> </p>
 <p>我们可以看到，某些层次负责的是对下层不同实现的抽象，从而对上层屏蔽实现细节。比方说 VFS 对上层（系统调用层）来说提供了统一的调用接口，同时对下层中不同的文件系统规约了实现模型，当新增一种文件系统实现的时候，只需要按照这种模型来设计，就可以无缝插入到 Linux 文件系统中。</p>
 <p>那么，为什么这么多系统一定要做分层的设计呢？答案是分层设计存在一定的优势。</p>
 <h3 id="分层的好处"><a href="#分层的好处" class="headerlink" title="分层的好处"></a><a href="#%E5%88%86%E5%B1%82%E7%9A%84%E5%A5%BD%E5%A4%84" title="分层的好处"></a>分层的好处</h3><hr>
@@ -323,9 +323,9 @@
 <p>没错，当业务逻辑简单时，层次之间的边界的确清晰，开发新的功能时也知道哪些代码要往哪儿写。但是当业务逻辑变得越来越复杂时，边界就会变得越来越模糊，给你举个例子。</p>
 <p>任何一个系统中都有用户系统，最基本的接口是返回用户信息的接口，它调用逻辑层的 GetUser 方法，GetUser 方法又和 User DB 交互获取数据，就像下图左边展示的样子。</p>
 <p>这时，产品提出一个需求，在 APP 中展示用户信息的时候，如果用户不存在，那么要自动给用户创建一个用户。同时，要做一个 HTML5 的页面，HTML5 页面要保留之前的逻辑，也就是不需要创建用户。这时逻辑层的边界就变得不清晰，表现层也承担了一部分的业务逻辑（将获取用户和创建用户接口编排起来）。</p>
-<p><img src="/images/pasted-27.png" srcset="/img/loading.gif" lazyload alt="upload successful"> </p>
+<p><img src="/blog/images/pasted-27.png" srcset="/blog/img/loading.gif" lazyload alt="upload successful"> </p>
 <p>那我们要如何做呢？参照阿里发布的《阿里巴巴 Java 开发手册 v1.4.0（详尽版）》 (opens new window)，我们可以将原先的三层架构细化成下面的样子：</p>
-<p><img src="/images/pasted-28.png" srcset="/img/loading.gif" lazyload alt="upload successful"> </p>
+<p><img src="/blog/images/pasted-28.png" srcset="/blog/img/loading.gif" lazyload alt="upload successful"> </p>
 <p>每一层分层的作用：</p>
 <ul>
 <li><p>终端显示层：</p>
@@ -418,7 +418,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>系统架构分层</div>
-      <div>http://example.com/2023/11/29/hello-world/</div>
+      <div>https://irisalex.github.io/blog/2023/11/29/hello-world/</div>
     </div>
     <div class="license-meta">
       
@@ -462,7 +462,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/29/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E7%9B%AE%E6%A0%87/" title="系统设计目标">
+                      <a href="/blog/2023/11/29/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E7%9B%AE%E6%A0%87/" title="系统设计目标">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">系统设计目标</span>
                         <span class="visible-mobile">Previous</span>
@@ -472,7 +472,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/20/hello-world1/" title="高并发系统设计">
+                      <a href="/blog/2023/11/20/hello-world1/" title="高并发系统设计">
                         <span class="hidden-mobile">高并发系统设计</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -602,8 +602,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -625,7 +625,7 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    <script  src="/blog/js/img-lazyload.js" ></script>
   
 
 
@@ -724,7 +724,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/js/local-search.js" ></script>
+  <script  src="/blog/js/local-search.js" ></script>
 
 
 
@@ -732,7 +732,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
+<script  src="/blog/js/boot.js" ></script>
 
 
   
