@@ -1,0 +1,721 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Iris.Alex">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="系统设计目标如何提升系统性能提到互联网系统设计，你可能听到最多的词儿就是 三高，也就是 高并发、高性能、高可用，它们是互联网系统架构设计永恒的主题。在前两节课中，我带你了解了高并发系统设计的含义，意义以及分层设计原则，接下来，我想带你整体了解一下高并发系统设计的目标，然后在此基础上，进入我们今天的话题：如何提升系统的性能？ 高并发系统设计的三大目标 高并发， 是指运用设计手段让系统能够处理更多的用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统设计目标">
+<meta property="og:url" content="http://example.com/2023/11/29/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E7%9B%AE%E6%A0%87/index.html">
+<meta property="og:site_name" content="Iris.Alex">
+<meta property="og:description" content="系统设计目标如何提升系统性能提到互联网系统设计，你可能听到最多的词儿就是 三高，也就是 高并发、高性能、高可用，它们是互联网系统架构设计永恒的主题。在前两节课中，我带你了解了高并发系统设计的含义，意义以及分层设计原则，接下来，我想带你整体了解一下高并发系统设计的目标，然后在此基础上，进入我们今天的话题：如何提升系统的性能？ 高并发系统设计的三大目标 高并发， 是指运用设计手段让系统能够处理更多的用">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/pasted-29.png">
+<meta property="og:image" content="http://example.com/images/pasted-30.png">
+<meta property="article:published_time" content="2023-11-29T11:21:16.000Z">
+<meta property="article:modified_time" content="2023-11-29T11:21:52.715Z">
+<meta property="article:author" content="Iris.Alex">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/pasted-29.png">
+  
+  
+  
+  <title>系统设计目标 - Iris.Alex</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Iris.Alex</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="系统设计目标"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-29 19:21" pubdate>
+          November 29, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          39 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">系统设计目标</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="系统设计目标"><a href="#系统设计目标" class="headerlink" title="系统设计目标"></a>系统设计目标</h1><h1 id="如何提升系统性能"><a href="#如何提升系统性能" class="headerlink" title="如何提升系统性能"></a><a href="#%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E7%B3%BB%E7%BB%9F%E6%80%A7%E8%83%BD" title="如何提升系统性能"></a>如何提升系统性能</h1><p>提到互联网系统设计，你可能听到最多的词儿就是 三高，也就是 高并发、高性能、高可用，它们是互联网系统架构设计永恒的主题。在前两节课中，我带你了解了高并发系统设计的含义，意义以及分层设计原则，接下来，我想带你整体了解一下高并发系统设计的目标，然后在此基础上，进入我们今天的话题：如何提升系统的性能？</p>
+<h3 id="高并发系统设计的三大目标"><a href="#高并发系统设计的三大目标" class="headerlink" title="高并发系统设计的三大目标"></a><a href="#%E9%AB%98%E5%B9%B6%E5%8F%91%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E7%9B%AE%E6%A0%87" title="高并发系统设计的三大目标"></a>高并发系统设计的三大目标</h3><hr>
+<p>高并发， 是指运用设计手段让系统能够处理更多的用户并发请求，也就是承担更大的流量。它是一切架构设计的背景和前提，脱离了它去谈性能和可用性是没有意义的。很显然嘛，你在每秒一次请求和每秒一万次请求，两种不同的场景下，分别做到毫秒级响应时间和五个九（99.999%）的可用性，无论是设计难度还是方案的复杂度，都不是一个级别的。</p>
+<p>而性能和可用性， 是我们实现高并发系统设计必须考虑的因素。</p>
+<p>性能反应了系统的使用体验，想象一下，同样承担每秒一万次请求的两个系统，一个响应时间是毫秒级，一个响应时间在秒级别，它们带给用户的体验肯定是不同的。</p>
+<p>可用性则表示系统可以正常服务用户的时间。我们再类比一下，还是两个承担每秒一万次的系统，一个可以做到全年不停机、无故障，一个隔三差五宕机维护，如果你是用户，你会选择使用哪一个系统呢？答案不言而喻。</p>
+<p>另一个耳熟能详的名词叫 可扩展性 ，它同样是高并发系统设计需要考虑的因素。为什么呢？我来举一个具体的例子。</p>
+<p>流量分为 平时流量 和 峰值流量 两种，峰值流量可能会是平时流量的几倍甚至几十倍，在应对峰值流量的时候，我们通常需要在架构和方案上做更多的准备。这就是淘宝会花费大半年的时间准备双十一，也是在面对「明星离婚」等热点事件时，看起来无懈可击的微博系统还是会出现服务不可用的原因。 而易于扩展的系统能在短时间内迅速完成扩容，更加平稳地承担峰值流量。</p>
+<p>高性能、高可用和可扩展，是我们在做高并发系统设计时追求的三个目标，我会用三节课的时间，带你了解在高并发大流量下如何设计高性能、高可用和易于扩展的系统。</p>
+<p>了解完这些内容之后，我们正式进入今天的话题：如何提升系统的性能？</p>
+<h3 id="性能优化原则"><a href="#性能优化原则" class="headerlink" title="性能优化原则"></a><a href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%8E%9F%E5%88%99" title="性能优化原则"></a>性能优化原则</h3><hr>
+<p>「天下武功，唯快不破」。性能是系统设计成功与否的关键，实现高性能也是对程序员个人能力的挑战。不过在了解实现高性能的方法之前，我们先明确一下性能优化的原则。</p>
+<ul>
+<li><p>首先，性能优化一定不能盲目，一定是问题导向的</p>
+<p>脱离了问题，盲目地提早优化会增加系统的复杂度，浪费开发人员的时间，也因为某些优化可能会对业务上有些折中的考虑，所以也会损伤业务。</p>
+</li>
+<li><p>其次，性能优化也遵循「八二原则」</p>
+<p>即你可以用 20% 的精力解决 80% 的性能问题。所以我们在优化过程中一定要抓住主要矛盾，优先优化主要的性能瓶颈点。</p>
+</li>
+<li><p>再次，性能优化也要有数据支撑</p>
+<p>在优化过程中，你要时刻了解你的优化让响应时间减少了多少，提升了多少的吞吐量。</p>
+</li>
+<li><p>最后，性能优化的过程是持续的</p>
+<p>高并发的系统通常是业务逻辑相对复杂的系统，那么在这类系统中出现的性能问题通常也会有多方面的原因。因此，我们在做性能优化的时候要明确目标，比方说，支撑每秒 1 万次请求的吞吐量下响应时间在 10ms，那么我们就需要持续不断地寻找性能瓶颈，制定优化方案，直到达到目标为止。</p>
+</li>
+</ul>
+<p>在以上四个原则的指引下，掌握常见性能问题的排查方式和优化手段，就一定能让你在设计高并发系统时更加游刃有余。</p>
+<h3 id="性能的度量指标"><a href="#性能的度量指标" class="headerlink" title="性能的度量指标"></a><a href="#%E6%80%A7%E8%83%BD%E7%9A%84%E5%BA%A6%E9%87%8F%E6%8C%87%E6%A0%87" title="性能的度量指标"></a>性能的度量指标</h3><hr>
+<p>对于性能我们需要有度量的标准，有了数据才能明确目前存在的性能问题，也能够用数据来评估性能优化的效果。 所以明确性能的度量指标十分重要。</p>
+<p>一般来说，度量性能的指标是 系统接口的响应时间，但是单次的响应时间是没有意义的，你需要知道一段时间的性能情况是什么样的。所以，我们需要收集这段时间的响应时间数据，然后依据一些统计方法计算出 特征值，这些特征值就能够代表这段时间的性能情况。我们常见的特征值有以下几类。</p>
+<ul>
+<li><p><strong>平均值</strong></p>
+<p>顾名思义，平均值是把这段时间所有请求的响应时间数据相加，再除以总请求数。平均值可以在一定程度上反应这段时间的性能，但它敏感度比较差，如果这段时间有少量慢请求时，在平均值上并不能如实的反应。</p>
+<p>举个例子，假设我们在 30s 内有 10000 次请求，每次请求的响应时间都是 1ms，那么这段时间响应时间平均值也是 1ms。这时，当其中 100 次请求的响应时间变成了 100ms，那么整体的响应时间是 100 * 100 + 9900 * 1) &#x2F; 10000 &#x3D; 1.99ms。你看，虽然从平均值上来看仅仅增加了不到 1ms，但是实际情况是有 1% 的请求（100&#x2F;10000） 的响应时间已经增加了 100 倍。 所以，平均值对于度量性能来说只能作为一个参考。</p>
+</li>
+<li><p><strong>最大值</strong></p>
+<p>这个更好理解，就是这段时间内所有请求响应时间最长的值，但它的问题又在于过于敏感了。</p>
+<p>还拿上面的例子来说，如果 10000 次请求中只有一次请求的响应时间达到 100ms，那么这段时间请求的响应耗时的最大值就是 100ms，性能损耗为原先的百分之一，这种说法明显是不准确的。</p>
+</li>
+<li><p><strong>分位值</strong></p>
+<p>分位值有很多种，比如 90 分位、95 分位、75 分位。以 90 分位为例，我们把这段时间请求的 响应时间从小到大排序，假如一共有 100 个请求，那么排在第 90 位的响应时间就是 90 分位值。分位值排除了偶发极慢请求对于数据的影响，能够很好地反应这段时间的性能情况，分位值越大，对于慢请求的影响就越敏感。</p>
+</li>
+</ul>
+<p><img src="/images/pasted-29.png" srcset="/img/loading.gif" lazyload alt="upload successful"> </p>
+<p>分位值是最适合作为时间段内，响应时间统计值来使用的，在实际工作中也应用最多。除此之外，平均值也可以作为一个参考值来使用。</p>
+<p>我在上面提到，脱离了并发来谈性能是没有意义的，我们通常使用 吞吐量 或者 同时在线用户数 来度量并发和流量，使用吞吐量的情况会更多一些。但是你要知道，这两个指标是呈倒数关系的。</p>
+<p>这很好理解，响应时间 1s 时，吞吐量是每秒 1 次，响应时间缩短到 10ms，那么吞吐量就上升到每秒 100 次。所以，一般我们度量性能时都会同时兼顾吞吐量和响应时间，比如我们设立性能优化的目标时通常会这样表述：在每秒 1 万次的请求量下，响应时间 99 分位值在 10ms 以下。</p>
+<p>那么，响应时间究竟控制在多长时间比较合适呢？这个不能一概而论。</p>
+<p><strong>用户角度看</strong></p>
+<ul>
+<li><p>200ms 是第一个分界点</p>
+<p>接口的响应时间在 200ms 之内，用户是感觉不到延迟的，就像是瞬时发生的一样。</p>
+</li>
+<li><p>而 1s 是另外一个分界点</p>
+<p>接口的响应时间在 1s 之内时，虽然用户可以感受到一些延迟，但却是可以接受的</p>
+</li>
+<li><p>超过 1s 之后用户就会有明显等待的感觉，等待时间越长，用户的使用体验就越差。</p>
+<p>所以，健康系统的 99 分位值的响应时间通常需要控制在 200ms 之内，而不超过 1s 的请求占比要在 99.99% 以上。</p>
+</li>
+</ul>
+<p>现在了解了性能的度量指标，那我们再来看一看，随着并发的增长我们实现高性能的思路是怎样的</p>
+<h3 id="高并发下的性能优化"><a href="#高并发下的性能优化" class="headerlink" title="高并发下的性能优化"></a><a href="#%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8B%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" title="高并发下的性能优化"></a>高并发下的性能优化</h3><hr>
+<p>假如说，你现在有一个系统，这个系统中处理核心只有一个，执行的任务的响应时间都在 10ms，它的吞吐量是在每秒 100 次。那么我们如何来优化性能从而提高系统的并发能力呢？主要有两种思路：</p>
+<ol>
+<li>是提高系统的处理核心数</li>
+<li>是减少单次任务的响应时间。</li>
+</ol>
+<p><strong>一. 提高系统的处理核心数</strong></p>
+<p>提高系统的处理核心数就是 增加系统的并行处理能力，这个思路是优化性能最简单的途径。拿上一个例子来说，你可以把系统的处理核心数增加为两个，并且增加一个进程，让这两个进程跑在不同的核心上。这样从理论上，你系统的吞吐量可以增加一倍。当然了，在这种情况下，吞吐量和响应时间就不是倒数关系了，而是：吞吐量 &#x3D; 并发进程数 &#x2F; 响应时间。</p>
+<p>计算机领域的阿姆达尔定律（Amdahl’s law）是吉恩·阿姆达尔在 1967 年提出的。它描述了并发进程数与响应时间之间的关系，含义是在固定负载下，并行计算的加速比，也就是并行化之后效率提升情况，可以用下面公式来表示：(Ws + Wp) &#x2F; (Ws + Wp&#x2F;s)</p>
+<p>其中，Ws 表示任务中的串行计算量，Wp 表示任务中的并行计算量，s 表示并行进程数。从这个公式我们可以推导出另外一个公式：1&#x2F;(1-p+p&#x2F;s)</p>
+<p>其中，s 还是表示并行进程数，p 表示任务中并行部分的占比。当 p 为 1 时，也就是完全并行时，加速比与并行进程数相等；当 p 为 0 时，即完全串行时，加速比为 1，也就是说完全无加速；当 s 趋近于无穷大的时候，加速比就等于 1&#x2F;(1-p)，你可以看到它完全和 p 成正比。特别是，当 p 为 1 时，加速比趋近于无穷大。</p>
+<p>以上公式的推导过程有些复杂，你只需要记住结论就好了。</p>
+<p>我们似乎找到了解决问题的银弹，<strong>是不是无限制地增加处理核心数就能无限制地提升性能，从而提升系统处理高并发的能力呢？</strong>很遗憾，随着并发进程数的增加，并行的任务对于系统资源的争抢也会愈发严重。在某一个临界点上继续增加并发进程数，反而会造成系统性能的下降，这就是性能测试中的 拐点模型。</p>
+<p><img src="/images/pasted-30.png" srcset="/img/loading.gif" lazyload alt="upload successful"> </p>
+<p>从图中可以发现：</p>
+<ol>
+<li><p>并发用户数处于轻压力区时，响应时间平稳，吞吐量和并发用户数线性相关。</p>
+</li>
+<li><p>而当并发用户数处于重压力区时，系统资源利用率到达极限，吞吐量开始有下降的趋势，响应时间也会略有上升。</p>
+</li>
+<li><p>这个时候，再对系统增加压力，系统就进入拐点区，处于超负荷状态，吞吐量下降，响应时间大幅度上升。</p>
+</li>
+</ol>
+<p>所以我们在评估系统性能时通常需要做压力测试，目的就是找到系统的「拐点」，从而知道系统的承载能力，也便于找到系统的瓶颈，持续优化系统性能。</p>
+<p>说完了提升并行能力，我们再看看优化性能的另一种方式：减少单次任务响应时间。</p>
+<p><strong>二. 减少单次任务响应时间</strong></p>
+<p>想要减少任务的响应时间，首先要看你的系统是 CPU 密集型 还是 IO 密集型 的，因为不同类型的系统性能优化方式不尽相同。</p>
+<ol>
+<li><p>CPU 密集型系统</p>
+<p>CPU 密集型系统中，需要处理大量的 CPU 运算，那么选用更高效的算法或者减少运算次数就是这类系统重要的优化手段。比方说，如果系统的主要任务是计算 Hash 值，那么这时选用更高性能的 Hash 算法就可以大大提升系统的性能。发现这类问题的主要方式，是通过一些 Profile 工具来找到消耗 CPU 时间最多的方法或者模块，比如 Linux 的 perf、eBPF 等</p>
+</li>
+<li><p>IO 密集型系统</p>
+<p>IO 密集型系统指的是系统的大部分操作是在等待 IO 完成，这里 IO 指的是磁盘 IO 和网络 IO。我们熟知的系统大部分都属于 IO 密集型，比如数据库系统、缓存系统、Web 系统。这类系统的性能瓶颈可能出在系统内部，也可能是依赖的其他系统，而发现这类性能瓶颈的手段主要有两类。</p>
+<p>2.1 第一类是 采用工具</p>
+<p>Linux 的工具集很丰富，完全可以满足你的优化需要，比如网络协议栈、网卡、磁盘、文件系统、内存，等等。这些工具的用法很多，你可以在排查问题的过程中逐渐积累。除此之外呢，一些开发语言还有针对语言特性的分析工具，比如说 go 语言就有其专属的内存分析工具。</p>
+<p>2.2 另外一类手段就是可以通过 监控 来发现性能问题。</p>
+<p>在监控中我们可以对任务的每一个步骤做分时的统计，从而找到任务的哪一步消耗了更多的时间。这一部分在演进篇中会有专门的介绍，这里就不再展开了。</p>
+<p>那么找到了系统的瓶颈点，我们要如何优化呢？优化方案会随着问题的不同而不同。比方说，如果是数据库访问慢，那么就要看是不是有锁表的情况、是不是有全表扫描、索引加得是否合适、是否有 JOIN 操作、需不需要加缓存，等等；如果是网络的问题，就要看网络的参数是否有优化的空间，抓包来看是否有大量的超时重传，网卡是否有大量丢包等。</p>
+</li>
+</ol>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a><a href="#%E5%B0%8F%E7%BB%93" title="小结"></a>小结</h4><p>了解了性能的原则、度量指标，以及在高并发下优化性能的基本思路。性能优化是一个很大的话题，上面所讲是完全不够的，比方说我们可以用缓存优化系统的读取性能，使用消息队列优化系统的写入性能等等。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>系统设计目标</div>
+      <div>http://example.com/2023/11/29/系统设计目标/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Iris.Alex</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 29, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/11/29/%E7%B3%BB%E7%BB%9F%E9%AB%98%E5%8F%AF%E7%94%A8/" title="系统高可用怎么做">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">系统高可用怎么做</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/29/hello-world/" title="系统架构分层">
+                        <span class="hidden-mobile">系统架构分层</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
