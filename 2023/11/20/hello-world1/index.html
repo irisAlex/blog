@@ -16,17 +16,17 @@
   <meta name="author" content="Iris.Alex">
   <meta name="keywords" content="">
   
-    <meta name="description" content="高并发系统设计方法高并发系统通用设计方法我们知道，高并发代表着大流量，高并发系统设计的魅力就在于我们能够凭借自己的聪明才智设计巧妙的方案，从而抵抗巨大流量的冲击，带给用户更好的使用体验。这些方案好似能操纵流量，让流量更加平稳得被系统中的服务和组件处理。 对与高并发来说大流量来说，我们一般采用三种方法：  scale-out (横向扩展) 分而治之是一种常见的高并发系统设计方法，采用分布式部署的方式">
+    <meta name="description" content="高并发系统通用设计方法我们知道，高并发代表着大流量，高并发系统设计的魅力就在于我们能够凭借自己的聪明才智设计巧妙的方案，从而抵抗巨大流量的冲击，带给用户更好的使用体验。这些方案好似能操纵流量，让流量更加平稳得被系统中的服务和组件处理。 对与高并发来说大流量来说，我们一般采用三种方法：  scale-out (横向扩展) 分而治之是一种常见的高并发系统设计方法，采用分布式部署的方式把流量分流开，让每">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高并发系统设计">
 <meta property="og:url" content="https://irisalex.github.io/blog/2023/11/20/hello-world1/index.html">
 <meta property="og:site_name" content="Iris.Alex">
-<meta property="og:description" content="高并发系统设计方法高并发系统通用设计方法我们知道，高并发代表着大流量，高并发系统设计的魅力就在于我们能够凭借自己的聪明才智设计巧妙的方案，从而抵抗巨大流量的冲击，带给用户更好的使用体验。这些方案好似能操纵流量，让流量更加平稳得被系统中的服务和组件处理。 对与高并发来说大流量来说，我们一般采用三种方法：  scale-out (横向扩展) 分而治之是一种常见的高并发系统设计方法，采用分布式部署的方式">
+<meta property="og:description" content="高并发系统通用设计方法我们知道，高并发代表着大流量，高并发系统设计的魅力就在于我们能够凭借自己的聪明才智设计巧妙的方案，从而抵抗巨大流量的冲击，带给用户更好的使用体验。这些方案好似能操纵流量，让流量更加平稳得被系统中的服务和组件处理。 对与高并发来说大流量来说，我们一般采用三种方法：  scale-out (横向扩展) 分而治之是一种常见的高并发系统设计方法，采用分布式部署的方式把流量分流开，让每">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://irisalex.github.io/blog/images/pasted-20.png">
 <meta property="og:image" content="https://irisalex.github.io/blog/images/pasted-21.png">
 <meta property="article:published_time" content="2023-11-20T10:17:36.000Z">
-<meta property="article:modified_time" content="2023-11-29T11:17:28.085Z">
+<meta property="article:modified_time" content="2023-11-29T12:34:24.829Z">
 <meta property="article:author" content="Iris.Alex">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://irisalex.github.io/blog/images/pasted-20.png">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.7k words
+          3.6k words
         
       </span>
     
@@ -275,7 +275,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="高并发系统设计方法"><a href="#高并发系统设计方法" class="headerlink" title="高并发系统设计方法"></a>高并发系统设计方法</h1><h1 id="高并发系统通用设计方法"><a href="#高并发系统通用设计方法" class="headerlink" title="高并发系统通用设计方法"></a><a href="#%E9%AB%98%E5%B9%B6%E5%8F%91%E7%B3%BB%E7%BB%9F%E9%80%9A%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95" title="高并发系统通用设计方法 "></a>高并发系统通用设计方法</h1><p>我们知道，高并发代表着大流量，高并发系统设计的魅力就在于我们能够凭借自己的聪明才智设计巧妙的方案，从而抵抗巨大流量的冲击，带给用户更好的使用体验。这些方案好似能操纵流量，让流量更加平稳得被系统中的服务和组件处理。</p>
+                <h1 id="高并发系统通用设计方法"><a href="#高并发系统通用设计方法" class="headerlink" title="高并发系统通用设计方法"></a><a href="#%E9%AB%98%E5%B9%B6%E5%8F%91%E7%B3%BB%E7%BB%9F%E9%80%9A%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95" title="高并发系统通用设计方法 "></a>高并发系统通用设计方法</h1><p>我们知道，高并发代表着大流量，高并发系统设计的魅力就在于我们能够凭借自己的聪明才智设计巧妙的方案，从而抵抗巨大流量的冲击，带给用户更好的使用体验。这些方案好似能操纵流量，让流量更加平稳得被系统中的服务和组件处理。</p>
 <p>对与高并发来说大流量来说，我们一般采用三种方法：</p>
 <ul>
 <li><p>scale-out (横向扩展)</p>
