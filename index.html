@@ -226,6 +226,138 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/blog/2023/12/01/%E6%95%B0%E6%8D%AE%E7%9A%84%E5%94%AF%E4%B8%80%E6%80%A7/" target="_self">
+          数据的唯一性
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/blog/2023/12/01/%E6%95%B0%E6%8D%AE%E7%9A%84%E5%94%AF%E4%B8%80%E6%80%A7/" target="_self">
+        <div>
+          如何保证分库分表后 ID 的全局唯一性？在之前的内容分享中我带你了解了分布式存储两个核心问题：数据冗余和数据分片，以及在传统关系型数据库中是如何解决的。 当我们面临高并发的查询数据请求时，可以使用主从读写分离的方式，部署多个从库分摊读压力； 当存储的数据量达到瓶颈时，我们可以将数据分片存储在多个节点上，降低单个存储节点的存储压力，此时我们的架构变成了下面这个样子：   你可以看到，我们通过分库分
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-01 11:02" pubdate>
+              2023-12-01
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/blog/2023/12/01/%E6%95%B0%E6%8D%AE%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%882/" target="_self">
+          数据优化方案2
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/blog/2023/12/01/%E6%95%B0%E6%8D%AE%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%882/" target="_self">
+        <div>
+          数据库优化方案 2：写入数据量增加时，如何实现分库分表？上次我们学习了在高并发下数据库的一种优化方案：读写分离，它就是依靠主从复制的技术使得数据库实现了数据复制为多份，增强了抵抗 大量并发读请求的能力，提升了数据库的查询性能的同时，也提升了数据的安全性，当某一个数据库节点，无论是主库还是从库发生故障时，我们还有其他的节点中存储着全量的数据，保证数据不会丢失。此时，你的电商系统的架构图变成了下面这样
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-01 10:56" pubdate>
+              2023-12-01
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/blog/2023/12/01/%E6%95%B0%E6%8D%AE%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/" target="_self">
+          数据优化方案1
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/blog/2023/12/01/%E6%95%B0%E6%8D%AE%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/" target="_self">
+        <div>
+          数据库优化方案 1：查询请求增加时，如何做主从分离？我们用池化技术解决了数据库连接复用的问题，这时，你的垂直电商系统虽然整体架构上没有变化，但是和数据库交互的过程有了变化，在你的 Web 工程和数据库之间增加了数据库连接池，减少了频繁创建连接的成本，从上节课的测试来看性能上可以提升 80%。现在的架构图如下所示：   此时，你的数据库还是单机部署，依据一些云厂商的 Benchmark 的结果，在
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-01 10:49" pubdate>
+              2023-12-01
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/blog/2023/12/01/%E6%B1%A0%E5%8C%96%E6%8A%80%E6%9C%AF/" target="_self">
+          池化技术
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/blog/2023/12/01/%E6%B1%A0%E5%8C%96%E6%8A%80%E6%9C%AF/" target="_self">
+        <div>
+          池化技术：如何减少频繁创建数据库连接的性能损耗？来想象这样一个场景，一天，公司 CEO 把你叫到会议室，告诉你公司看到了一个新的商业机会，希望你能带领一名兄弟，迅速研发出一套面向某个垂直领域的电商系统。 在人手紧张，时间不足的情况下，为了能够完成任务，你毫不犹豫地采用了 最简单的架构 ：前端一台 Web 服务器运行业务代码，后端一台数据库服务器存储业务数据。   这个架构图是我们每个人最熟悉的，最
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-01 09:00" pubdate>
+              2023-12-01
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/blog/2023/11/29/%E7%B3%BB%E7%BB%9F%E6%89%A9%E5%B1%95%E6%80%A7/" target="_self">
           系统扩展性
         </a>
