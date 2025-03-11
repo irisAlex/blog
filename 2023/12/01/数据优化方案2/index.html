@@ -1,284 +1,78 @@
-
-
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
-
-
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
-  <link rel="icon" href="/blog/img/fluid.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta charset="utf-8">
   
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Iris.Alex">
-  <meta name="keywords" content="">
+  <title>数据优化方案2 | Iris.Alex</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-    <meta name="description" content="数据库优化方案 2：写入数据量增加时，如何实现分库分表？上次我们学习了在高并发下数据库的一种优化方案：读写分离，它就是依靠主从复制的技术使得数据库实现了数据复制为多份，增强了抵抗 大量并发读请求的能力，提升了数据库的查询性能的同时，也提升了数据的安全性，当某一个数据库节点，无论是主库还是从库发生故障时，我们还有其他的节点中存储着全量的数据，保证数据不会丢失。此时，你的电商系统的架构图变成了下面这样">
-<meta property="og:type" content="article">
-<meta property="og:title" content="数据优化方案2">
-<meta property="og:url" content="https://irisalex.github.io/blog/2023/12/01/%E6%95%B0%E6%8D%AE%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%882/index.html">
-<meta property="og:site_name" content="Iris.Alex">
-<meta property="og:description" content="数据库优化方案 2：写入数据量增加时，如何实现分库分表？上次我们学习了在高并发下数据库的一种优化方案：读写分离，它就是依靠主从复制的技术使得数据库实现了数据复制为多份，增强了抵抗 大量并发读请求的能力，提升了数据库的查询性能的同时，也提升了数据的安全性，当某一个数据库节点，无论是主库还是从库发生故障时，我们还有其他的节点中存储着全量的数据，保证数据不会丢失。此时，你的电商系统的架构图变成了下面这样">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://irisalex.github.io/blog/images/pasted-46.png">
-<meta property="og:image" content="https://irisalex.github.io/blog/images/pasted-47.png">
-<meta property="og:image" content="https://irisalex.github.io/blog/images/pasted-48.png">
-<meta property="og:image" content="https://irisalex.github.io/blog/images/pasted-49.png">
-<meta property="article:published_time" content="2023-12-01T02:56:57.000Z">
-<meta property="article:modified_time" content="2023-12-01T02:59:22.531Z">
-<meta property="article:author" content="Iris.Alex">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://irisalex.github.io/blog/images/pasted-46.png">
+    <link rel="shortcut icon" href="/blog/favicon.png">
   
   
-  
-  <title>数据优化方案2 - Iris.Alex</title>
+<link rel="stylesheet" href="/blog/css/style.css">
 
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/blog/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
-  
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"irisalex.github.io","root":"/blog/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/blog/js/utils.js" ></script>
-  <script  src="/blog/js/color-schema.js" ></script>
-  
-
-
-  
 </head>
 
-
 <body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Iris.Alex</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/blog/" id="subtitle">alex</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/blog/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/blog/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/blog/about">About</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-数据优化方案2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2023/12/01/%E6%95%B0%E6%8D%AE%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%882/" class="article-date">
+  <time class="dt-published" datetime="2023-12-01T02:56:57.000Z" itemprop="datePublished">2023-12-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      数据优化方案2
+    </h1>
   
 
-  <header>
+      </header>
     
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/blog/">
-      <strong>Iris.Alex</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/blog/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/blog/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/blog/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/blog/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/blog/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/blog/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="数据优化方案2"></span>
-          
-        </div>
-
-        
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-01 10:56" pubdate>
-          December 1, 2023 am
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          4.5k words
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          38 mins
-        
-      </span>
-    
-
-    
-    
-  </div>
-
-
-        
-      </div>
-
+    <div class="e-content article-entry" itemprop="articleBody">
       
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <h1 id="seo-header">数据优化方案2</h1>
-            
-            
-              <div class="markdown-body">
-                
-                <h1 id="数据库优化方案-2：写入数据量增加时，如何实现分库分表？"><a href="#数据库优化方案-2：写入数据量增加时，如何实现分库分表？" class="headerlink" title="数据库优化方案 2：写入数据量增加时，如何实现分库分表？"></a><a href="#_%E4%B8%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88-2-%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%E9%87%8F%E5%A2%9E%E5%8A%A0%E6%97%B6-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8"></a>数据库优化方案 2：写入数据量增加时，如何实现分库分表？</h1><p>上次我们学习了在高并发下数据库的一种优化方案：读写分离，它就是依靠主从复制的技术使得数据库实现了数据复制为多份，增强了抵抗 <strong>大量并发读请求的能力</strong>，提升了数据库的查询性能的同时，也提升了数据的安全性，当某一个数据库节点，无论是主库还是从库发生故障时，我们还有其他的节点中存储着全量的数据，保证数据不会丢失。此时，你的电商系统的架构图变成了下面这样：</p>
-<p><img src="/blog/images/pasted-46.png" srcset="/blog/img/loading.gif" lazyload alt="upload successful"> </p>
+        <h1 id="数据库优化方案-2：写入数据量增加时，如何实现分库分表？"><a href="#数据库优化方案-2：写入数据量增加时，如何实现分库分表？" class="headerlink" title="数据库优化方案 2：写入数据量增加时，如何实现分库分表？"></a><a href="#_%E4%B8%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88-2-%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%E9%87%8F%E5%A2%9E%E5%8A%A0%E6%97%B6-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8"></a>数据库优化方案 2：写入数据量增加时，如何实现分库分表？</h1><p>上次我们学习了在高并发下数据库的一种优化方案：读写分离，它就是依靠主从复制的技术使得数据库实现了数据复制为多份，增强了抵抗 <strong>大量并发读请求的能力</strong>，提升了数据库的查询性能的同时，也提升了数据的安全性，当某一个数据库节点，无论是主库还是从库发生故障时，我们还有其他的节点中存储着全量的数据，保证数据不会丢失。此时，你的电商系统的架构图变成了下面这样：</p>
+<p><img src="/blog/images/pasted-46.png" alt="upload successful"> </p>
 <p>这时，公司 CEO 突然传来一个好消息，运营推广持续带来了流量，你所设计的电商系统的订单量突破了五千万，订单数据都是单表存储的，你的压力倍增，因为无论是数据库的查询还是写入性能都在下降，数据库的磁盘空间也在报警。所以，你主动分析现阶段自己需要考虑的问题，并寻求高效的解决方式，以便系统能正常运转下去。你考虑的问题主要有以下几点：</p>
 <ol>
 <li><p>系统正在持续不断地的发展</p>
@@ -308,7 +102,7 @@
 <p>垂直拆分的原则一般是按照业务类型来拆分，核心思想是专库专用，将业务耦合度比较高的表拆分到单独的库中。举个形象的例子就是在整理衣服的时候，将羽绒服、毛衣、T 恤分别放在不同的格子里。这样可以解决我在开篇提到的第三个问题：把不同的业务的数据分拆到不同的数据库节点上，这样一旦数据库发生故障时只会影响到某一个模块的功能，不会影响到整体功能，从而实现了数据层面的故障隔离。</p>
 <p><strong>我还是以微博系统为例来给你说明一下。</strong></p>
 <p>在微博系统中有和用户相关的表，有和内容相关的表，有和关系相关的表，这些表都存储在主库中。在拆分后，我们期望用户相关的表分拆到用户库中，内容相关的表分拆到内容库中，关系相关的表分拆到关系库中。</p>
-<p><img src="/blog/images/pasted-47.png" srcset="/blog/img/loading.gif" lazyload alt="upload successful"> </p>
+<p><img src="/blog/images/pasted-47.png" alt="upload successful"> </p>
 <p>对数据库进行垂直拆分是一种偏常规的方式，这种方式其实你会比较常用，不过拆分之后，虽然可以暂时缓解存储容量的瓶颈，但并不是万事大吉，因为数据库垂直拆分后依然不能解决某一个业务模块的数据大量膨胀的问题，一旦你的系统遭遇某一个业务库的数据量暴增，在这个情况下，你还需要继续寻找可以弥补的方式。</p>
 <p>比如微博关系量早已经过了千亿，单一的数据库或者数据表已经远远不能满足存储和查询的需求了， **这个时候，你需要将数据拆分到多个数据库和数据表中，也就是对数据库和数据表做水平拆分了 ** 。</p>
 <h2 id="如何对数据库做水平拆分"><a href="#如何对数据库做水平拆分" class="headerlink" title=" 如何对数据库做水平拆分"></a><a href="#%E5%A6%82%E4%BD%95%E5%AF%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E5%81%9A%E6%B0%B4%E5%B9%B3%E6%8B%86%E5%88%86"></a> 如何对数据库做水平拆分</h2><p>和垂直拆分的关注点不同：</p>
@@ -322,14 +116,14 @@
 <p>这种拆分规则比较适用于实体表，比如说用户表，内容表，我们一般按照这些实体表的 ID 字段来拆分。比如说我们想把用户表拆分成 16 个库，64 张表，那么可以先对用户 ID 做哈希，哈希的目的是将 ID 尽量打散，然后再对 16 取余，这样就得到了分库后的索引值；对 64 取余，就得到了分表后的索引值。</p>
 </li>
 </ol>
-<p><img src="/blog/images/pasted-48.png" srcset="/blog/img/loading.gif" lazyload alt="upload successful"> </p>
+<p><img src="/blog/images/pasted-48.png" alt="upload successful"> </p>
 <ol start="2">
 <li><p>另一种比较常用的是按照某一个字段的 <strong>区间</strong> 来拆分，比较常用的是时间字段。</p>
 <p>你知道在内容表里面有「创建时间」的字段，而我们也是按照时间来查看一个人发布的内容。我们可能会要看昨天的内容，也可能会看一个月前发布的内容，这时就可以按照创建时间的区间来分库分表，比如说可以把一个月的数据放入一张表中，这样在查询时就可以根据创建时间先定位数据存储在哪个表里面，再按照查询条件来查询。</p>
 <p>一般来说，列表数据可以使用这种拆分方式，比如一个人一段时间的订单，一段时间发布的内容。但是这种方式可能会存在明显的热点，这很好理解嘛，你当然会更关注最近我买了什么，发了什么，所以查询的 QPS 也会更多一些，对性能有一定的影响。另外，使用这种拆分规则后，数据表要提前建立好，否则如果时间到了 2020 年元旦，DBA（Database Administrator，数据库管理员）却忘记了建表，那么 2020 年的数据就没有库表可写了，就会发生故障了。</p>
 </li>
 </ol>
-<p><img src="/blog/images/pasted-49.png" srcset="/blog/img/loading.gif" lazyload alt="upload successful"> </p>
+<p><img src="/blog/images/pasted-49.png" alt="upload successful"> </p>
 <p>数据库在分库分表之后，数据的访问方式也有了极大的改变，<strong>原先只需要根据查询条件到从库中查询数据即可，现在则需要先确认数据在哪一个库表中，再到那个库表中查询数据</strong> 。这种复杂度也可以通过数据库中间件来解决，我们在上一节中已经有所讲解，这里就不再赘述了，不过，我想再次强调的是你需要对所使用数据库中间件的原理有足够的了解和足够强的运维上的把控能力。</p>
 <p>不过，你要知道的是，分库分表虽然能够解决数据库扩展性的问题，但是它也给我们的使用带来了一些问题。</p>
 <h2 id="解决分库分表引入的问题"><a href="#解决分库分表引入的问题" class="headerlink" title="# 解决分库分表引入的问题"></a><a href="#%E8%A7%A3%E5%86%B3%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E5%BC%95%E5%85%A5%E7%9A%84%E9%97%AE%E9%A2%98">#</a> 解决分库分表引入的问题</h2><p>分库分表引入的一个最大的问题就是 <strong>引入了分库分表键，也叫做分区键，</strong> 也就是我们对数据库做分库分表所依据的字段。</p>
@@ -350,344 +144,125 @@
 </ol>
 <p>其实，在我看来，有很多人并没有真正从根本上搞懂为什么要拆分，拆分后会带来哪些问题，只是一味地学习大厂现有的拆分方法，从而导致问题频出。 <strong>所以，你在使用一个方案解决一个问题的时候一定要弄清楚原理，搞清楚这个方案会带来什么问题，要如何来解决，要知其然也知其所以然，这样才能在解决问题的同时避免踩坑。</strong></p>
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>数据优化方案2</div>
-      <div>https://irisalex.github.io/blog/2023/12/01/数据优化方案2/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>Author</div>
-          <div>Iris.Alex</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>Posted on</div>
-          <div>December 1, 2023</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>Licensed under</div>
-          <div>
-            
-              
-              
-                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
-                    <i class="iconfont icon-by"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
       
     </div>
-    <div class="license-icon iconfont"></div>
+    <footer class="article-footer">
+      <a data-url="https://irisalex.github.io/blog/2023/12/01/%E6%95%B0%E6%8D%AE%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%882/" data-id="cm83ufjpe000blfcyfg9m6nok" data-title="数据优化方案2" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2023/12/01/%E6%95%B0%E6%8D%AE%E7%9A%84%E5%94%AF%E4%B8%80%E6%80%A7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          数据的唯一性
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2023/12/01/%E6%95%B0%E6%8D%AE%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">数据优化方案1</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2023/12/04/8%E7%A7%8D%E6%B5%81%E8%A1%8C%E7%9A%84%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/">8种流行的网络模型</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2023/12/01/NoSQL-%E7%9A%84%E5%BA%94%E7%94%A8/">NoSQL 的应用</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2023/12/01/%E6%95%B0%E6%8D%AE%E7%9A%84%E5%94%AF%E4%B8%80%E6%80%A7/">数据的唯一性</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2023/12/01/%E6%95%B0%E6%8D%AE%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%882/">数据优化方案2</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2023/12/01/%E6%95%B0%E6%8D%AE%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/">数据优化方案1</a>
+          </li>
+        
+      </ul>
+    </div>
   </div>
 
+  
+    
 
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/blog/2023/12/01/%E6%95%B0%E6%8D%AE%E7%9A%84%E5%94%AF%E4%B8%80%E6%80%A7/" title="数据的唯一性">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数据的唯一性</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/blog/2023/12/01/%E6%95%B0%E6%8D%AE%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/" title="数据优化方案1">
-                        <span class="hidden-mobile">数据优化方案1</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>Table of Contents</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/11/">November 2023</a></li></ul>
     </div>
   </div>
-</div>
-
-
-
-
 
   
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+</aside>
       </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2025 By Autoload<br>
+      Driven - <a href="https://hexo.io/" target="_blank">Hexo</a>|Theme - <a href="https://github.com/autoload/hexo-theme-auto" target="_blank">Auto</a>
     </div>
   </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+</footer>
     </div>
+    <nav id="mobile-nav">
   
+    <a href="/blog/" class="mobile-nav-link">Home</a>
   
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
   
+    <a href="/blog/categories" class="mobile-nav-link">Categories</a>
   
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
+    <a href="/blog/tags" class="mobile-nav-link">Tags</a>
   
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/blog/js/events.js" ></script>
-<script  src="/blog/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
+    <a href="/blog/about" class="mobile-nav-link">About</a>
   
-    <script  src="/blog/js/img-lazyload.js" ></script>
-  
+</nav>
+    
+
+
+<script src="/blog/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
 
 
 
 
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/blog/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/blog/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
+  </div>
 </body>
 </html>
