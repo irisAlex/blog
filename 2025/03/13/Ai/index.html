@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Ai | Iris.Alex</title>
+  <title>大模型 | Iris.Alex</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <link rel="shortcut icon" href="/blog/favicon.png">
@@ -63,7 +63,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Ai
+      大模型
     </h1>
   
 
@@ -73,120 +73,129 @@
       
         <h1 id="大模型到底是什么？"><a href="#大模型到底是什么？" class="headerlink" title="大模型到底是什么？"></a>大模型到底是什么？</h1><hr>
 <h4 id="什么是大模型？"><a href="#什么是大模型？" class="headerlink" title="什么是大模型？"></a>什么是大模型？</h4><p>&emsp;&emsp;大模型（Large Model）通常指的是参数规模庞大的人工智能模型，尤其是基于深度学习的神经网络模型。这些模型通常具备强大的自然语言处理（NLP）、计算机视觉、语音识别等能力，能够执行复杂的推理、生成和决策任务。<br><br>&emsp;&emsp; 简单来说，大模型就像一个超级聪明的大脑，通过“学习”大量的数据（比如书籍、文章、网页内容等），掌握了语言、逻辑甚至某种程度的推理能力。像(chatgpt),（deepseek）就是一个大模型的例子，目的是帮助用户理解世界、回答问题。<br><br>&emsp;&emsp;从技术角度看，大模型通常基于 Transformer 架构（一种深度学习框架），通过预训练（Pre-training）和微调（Fine-tuning）的方式，让模型在通用知识的基础上适应特定任务。比如，被训练来对话，能尽量自然、准确地回应用户提出的问题。</p>
-<h5 id="大模型的特点"><a href="#大模型的特点" class="headerlink" title="大模型的特点"></a>大模型的特点</h5><ol>
-<li><strong>超大参数量：</strong>通常包含数十亿甚至上万亿个参数，如 OpenAI 的 GPT-4、Google 的 Gemini、Meta 的 LLaMA ，xAI的 Grok 3等。</li>
-<li><strong>大规模数据训练：</strong> 使用海量的文本、代码、图片、语音等数据进行训练，使其具备广泛的知识和推理能力。</li>
-<li><strong>通用性强：</strong> 能够处理多种任务，包括文本生成、翻译、代码编写、图片生成、自动问答等。</li>
-<li><strong>多模态能力：</strong> 一些大模型不仅支持文本，还可以处理图像、音频、视频等多种输入（如 GPT-4V、Gemini 1.5）。</li>
-<li><strong>强大的推理能力：</strong>能够理解复杂语境、进行逻辑推理，甚至在一定程度上进行创造性思考。</li>
+<h3 id="大模型的特点"><a href="#大模型的特点" class="headerlink" title="大模型的特点"></a>大模型的特点</h3><ol>
+<li><p><strong>超大参数量：</strong>通常包含数十亿甚至上万亿个参数，如 OpenAI 的 GPT-4、Google 的 Gemini、Meta 的 LLaMA ，xAI的 Grok 3等。</p>
+</li>
+<li><p><strong>大规模数据训练：</strong> 使用海量的文本、代码、图片、语音等数据进行训练，使其具备广泛的知识和推理能力。</p>
+</li>
+<li><p><strong>通用性强：</strong> 能够处理多种任务，包括文本生成、翻译、代码编写、图片生成、自动问答等。</p>
+</li>
+<li><p><strong>多模态能力：</strong> 一些大模型不仅支持文本，还可以处理图像、音频、视频等多种输入（如 GPT-4V、Gemini 1.5）。</p>
+</li>
+<li><p><strong>强大的推理能力：</strong>能够理解复杂语境、进行逻辑推理，甚至在一定程度上进行创造性思考。</p>
+</li>
 </ol>
 <hr>
-<h4 id="技术角度"><a href="#技术角度" class="headerlink" title="技术角度"></a>技术角度</h4><p><strong>1. 架构基础：Transformer</strong> <br><br>&emsp;&emsp;大模型通常基于 Transformer 架构，这是 2017 年谷歌提出的一个深度学习模型框架，特别适合处理序列数据（比如句子）。Transformer 的核心是“自注意力机制”（Self-Attention），简单说就是模型能自己判断一句话里哪些词更重要。比如在“我喜欢吃苹果”里，“喜欢”和“苹果”可能比“吃”更关键，模型会自动给它们分配更多“关注”。<br><br>&emsp;&emsp;<strong>编码器和解码器：</strong>Transformer 分两部分。编码器把输入（比如你的问题）转化成一种数学表示（向量）；解码器把这个表示生成输出。<br><br>&emsp;&emsp; <strong>多层堆叠：</strong>大模型会把多个 Transformer 层叠起来（几十层甚至上百层），每层都更深入地理解和加工信息。</p>
-<p><strong>2. 参数规模</strong><br><br>&emsp;&emsp; 大模型之所以“大”，是因为它有巨量的参数。参数可以理解为模型大脑里的“神经连接”，用来记住和处理信息。比如：<br><br>&emsp;&emsp; GPT-3 有 1750 亿个参数。<br>更新的模型可能参数更多。<br>这些参数通过训练调整，让模型能“记住”语言规律、事实和逻辑。<br></p>
-<p><strong>3. 训练过程</strong><br><br>&emsp;&emsp;训练大模型是个超级复杂的工程，分两步：<br></p>
+<h4 id="技术角度"><a href="#技术角度" class="headerlink" title="技术角度"></a>技术角度</h4><p><strong>1. 架构基础：Transformer</strong> <br><br>&emsp;&emsp;大模型通常基于 Transformer 架构，这是 2017 年谷歌提出的一个深度学习模型框架，特别适合处理序列数据（比如句子）。Transformer 的核心是“自注意力机制”（Self-Attention），简单说就是模型能自己判断一句话里哪些词更重要。比如在“我喜欢吃苹果”里，“喜欢”和“苹果”可能比“吃”更关键，模型会自动给它们分配更多“关注”。<br><br><strong>编码器和解码器：</strong>Transformer 分两部分。编码器把输入（比如你的问题）转化成一种数学表示（向量）；解码器把这个表示生成输出。</p>
+<p> <strong>多层堆叠：</strong>大模型会把多个 Transformer 层叠起来（几十层甚至上百层），每层都更深入地理解和加工信息。</p>
+<p><strong>2. 参数规模</strong><br><br>大模型之所以“大”，是因为它有巨量的参数。参数可以理解为模型大脑里的“神经连接”，用来记住和处理信息。比如：</p>
 <ul>
-<li><pre><code>预训练（Pre-training）：模型先在一大堆无标注的数据上（比如整个互联网的文本）学习语言的基本规律。比如，它会预测一句话的下半句是什么（“我喜欢吃...” → “苹果”），或者填空。这种方式让模型掌握通用知识。
-</code></pre>
+<li><p><strong>GPT-3 有 1750 亿个参数。</strong></p>
 </li>
-<li>微调（Fine-tuning）：在特定任务上（比如对话、翻译）用更小的数据集调整模型，让它更擅长某个领域。我就被微调过，能更好地回答问题和聊天。训练需要海量计算资源，比如成千上万块 GPU，跑几天甚至几个月。&nbsp;</li>
+<li><p><strong>更新的模型可能参数更多。</strong></p>
+</li>
+<li><p><strong>这些参数通过训练调整，让模型能“记住”语言规律、事实和逻辑。</strong></p>
+</li>
 </ul>
-<p><strong>4. 数据和计算</strong>&nbsp;</p>
+<p><strong>3. 训练过程</strong></p>
+<p>训练大模型是个超级复杂的工程，分两步：</p>
 <ul>
-<li>数据：大模型需要吞噬海量文本数据（想想维基百科、新闻、论坛帖子等等），可能有几百 TB。</li>
-<li>计算力：训练靠超级计算机集群，成本动辄几百万美元。</li>
+<li><p><strong>预训练（Pre-training）：</strong>模型先在一大堆无标注的数据上（比如整个互联网的文本）学习语言的基本规律。比如，它会预测一句话的下半句是什么（“我喜欢吃…” → “苹果”），或者填空。这种方式让模型掌握通用知识。</p>
+</li>
+<li><p><strong>微调（Fine-tuning）：</strong>在特定任务上（比如对话、翻译）用更小的数据集调整模型，让它更擅长某个领域。我就被微调过，能更好地回答问题和聊天。训练需要海量计算资源，比如成千上万块 GPU，跑几天甚至几个月。</p>
+</li>
 </ul>
-<p><strong>5. 推理（Inference）</strong> <br><br>&emsp;&emsp; 训练完后，模型进入“推理”阶段，也就是实际使用时。比如你问问题：<br>大模型把你的输入转成数字<strong>（向量化）。</strong><br>通过多层 Transformer 处理，生成回答的数字表示。<br>再把数字转回结果输出。<br>这过程很快，但背后是亿万次计算。</p>
-<h4 id="Transformer-的核心技术"><a href="#Transformer-的核心技术" class="headerlink" title="Transformer 的核心技术"></a>Transformer 的核心技术</h4><h6 id="Transformer-核心技术自注意力（Self-Attention）怎么算？"><a href="#Transformer-核心技术自注意力（Self-Attention）怎么算？" class="headerlink" title="Transformer 核心技术自注意力（Self-Attention）怎么算？"></a>Transformer 核心技术自注意力（Self-Attention）怎么算？</h6><p>&emsp;&emsp;自注意力是 Transformer 的核心，它让模型在处理一句话时，知道每个词和其他词的关系，以及哪些词更重要。计算过程可以拆成几个步骤：<br><br><strong>1. 输入向量化</strong><br><br>&emsp;&emsp; 假设输入是“我喜欢吃苹果”。每个词会被转化成一个数字向量（比如 512 维或 768 维，具体看模型设计）。这些向量是模型通过预训练学会的，代表词的意思。</p>
+<p><strong>4. 数据和计算</strong></p>
 <ul>
-<li>“我” → [0.1, -0.3, 0.5, …]（一个向量）</li>
-<li>“喜欢” → [0.2, 0.4, -0.1, …]</li>
-<li>以此类推。</li>
+<li><p><strong>数据：</strong>大模型需要吞噬海量文本数据（想想维基百科、新闻、论坛帖子等等），可能有几百 TB。</p>
+</li>
+<li><p><strong>计算力：</strong> 训练靠超级计算机集群，成本动辄几百万美元。</p>
+</li>
 </ul>
-<p><strong>2. 生成 Q、K、V 向量</strong> <br><br>&emsp;&emsp;自注意力需要三种向量：<strong>查询（Query, Q）</strong>、<strong>键（Key, K）</strong>和<strong>值（Value, V）</strong>。这三种向量是从输入向量通过线性变换（矩阵乘法）算出来的。 <br></p>
+<p><strong>5. 推理（Inference）</strong><br>训练完后，模型进入“推理”阶段，也就是实际使用时。比如你问问题：</p>
 <ul>
-<li>用三个不同的权重矩阵 𝑊𝑄,𝑊𝐾,𝑊𝑉：</li>
-<li>Q&#x3D;输入向量  x wQ</li>
-<li>k&#x3D;输入向量  x wk</li>
-<li>v&#x3D;输入向量  x wv</li>
+<li><p><strong>大模型把你的输入转成数字（向量化）。</strong></p>
+</li>
+<li><p><strong>通过多层 Transformer 处理，生成回答的数字表示。</strong></p>
+</li>
+<li><p><strong>再把数字转回结果输出。</strong></p>
+</li>
+</ul>
+<p>这过程很快，但背后是亿万次计算。</p>
+<hr>
+<h1 id="Transformer-的核心技术"><a href="#Transformer-的核心技术" class="headerlink" title="Transformer 的核心技术"></a>Transformer 的核心技术</h1><h4 id="Transformer-核心技术自注意力（Self-Attention）怎么算？"><a href="#Transformer-核心技术自注意力（Self-Attention）怎么算？" class="headerlink" title="Transformer 核心技术自注意力（Self-Attention）怎么算？"></a>Transformer 核心技术自注意力（Self-Attention）怎么算？</h4><p>&emsp;&emsp;自注意力是 Transformer 的核心，它让模型在处理一句话时，知道每个词和其他词的关系，以及哪些词更重要。计算过程可以拆成几个步骤：</p>
+<p><strong>1. 输入向量化</strong><br>&emsp;&emsp; 假设输入是“我喜欢吃苹果”。每个词会被转化成一个数字向量（比如 512 维或 768 维，具体看模型设计）。这些向量是模型通过预训练学会的，代表词的意思。</p>
+<ul>
+<li><p>“我” → [0.1, -0.3, 0.5, …]（一个向量）</p>
+</li>
+<li><p>“喜欢” → [0.2, 0.4, -0.1, …]</p>
+</li>
+<li><p>以此类推。</p>
+</li>
+</ul>
+<p><strong>2. 生成 Q、K、V 向量</strong><br>&emsp;&emsp;自注意力需要三种向量：<strong>查询（Query, Q）</strong>、<strong>键（Key, K）</strong>和<strong>值（Value, V）</strong>。这三种向量是从输入向量通过线性变换（矩阵乘法）算出来的。 <br><br><strong>用三个不同的权重矩阵 𝑊𝑄,𝑊𝐾,𝑊𝑉：</strong></p>
+<ul>
+<li><p>Q&#x3D;输入向量  x wQ</p>
+</li>
+<li><p>k&#x3D;输入向量  x wk</p>
+</li>
+<li><p>v&#x3D;输入向量  x wv</p>
+</li>
 </ul>
 <p>比如“我”的向量乘以 Wq 得到它的 Q 向量，表示“我”在问其他词的关系。</p>
 <p>这些矩阵是模型训练时学到的。</p>
-<p><strong>3. 计算注意力分数</strong> <br><br>接下来，算每个词对其他词的“关注度”：<br></p>
+<p><strong>3. 计算注意力分数</strong><br>接下来，算每个词对其他词的“关注度”:</p>
 <ul>
-<li>用 Q 和 K 做点积（Dot Product），得到一个分数。比如“我”的 Q 和“喜欢”的 K 点积，得出“我”和“喜欢”的关系强度。</li>
-<li>对所有词两两计算，得到一个分数矩阵：</li>
+<li><p>用 Q 和 K 做点积（Dot Product），得到一个分数。比如“我”的 Q 和“喜欢”的 K 点积，得出“我”和“喜欢”的关系强度。</p>
+</li>
+<li><p>对所有词两两计算，得到一个分数矩阵：</p>
+</li>
 </ul>
-<pre><code>      我   喜欢  吃   苹果
-我    0.8  0.3  0.1  0.6
-喜欢  0.3  0.9  0.2  0.4
-吃    0.1  0.2  0.7  0.3
-苹果  0.6  0.4  0.3  0.8
-```
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">     我   喜欢  吃   苹果</span><br><span class="line">我    0.8  0.3  0.1  0.6</span><br><span class="line">喜欢  0.3  0.9  0.2  0.4</span><br><span class="line">吃    0.1  0.2  0.7  0.3</span><br><span class="line">苹果  0.6  0.4  0.3  0.8</span><br></pre></td></tr></table></figure>
 
-**4. 归一化（Softmax）** &lt;br&gt;
-&amp;emsp;&amp;emsp; 这些分数会通过 Softmax 函数归一化，变成概率分布。&lt;br&gt;
-&amp;emsp;&amp;emsp; 比如“我”这行的分数 [0.8, 0.3, 0.1, 0.6] 可能变成 [0.4, 0.15, 0.05, 0.3]，总和为 1。
-
-** 5. 加权求和 ** &lt;br&gt;
-用这些概率去加权 V 向量，得到新的表示：&lt;br&gt;
-&amp;emsp;&amp;emsp; “我”的新向量 = 0.4 × “我”的 V + 0.15 × “喜欢”的 V + 0.05 × “吃”的 V + 0.3 × “苹果”的 V。
-这样，“我”的新表示融合了整句话的信息，但更关注“喜欢”和“苹果”。
-
-**输出** &lt;br&gt;
-经过自注意力，每词的向量都更新了，带着上下文信息，然后传到下一层 Transformer 处理。
-
----
-#### 从一层传到下一层的处理过程 &lt;br&gt;
-
-##### 每一层具体做什么？
-每一层的处理本质相同，但作用逐渐深化：
-
-* 第一层：可能关注词与词的基本关系，比如“我”和“喜欢”绑定，“吃”和“苹果”关联。
-* 第二层：基于第一层的结果，可能发现更高阶的模式，比如“我喜欢”是主谓结构，“吃苹果”是动作对象。
-* 更深层：可能理解整个句子的意图（表达喜好），甚至推理出隐藏信息（比如“苹果”是食物）。
-技术上：
-
-**自注意力：** 每层重新计算词之间的关系，但因为输入更丰富（带着上一层的上下文），结果更精准。
-
-**前馈网络：** 对每个词的表示做非线性变换，增强表达能力。
-
-**残差和归一化：**保证信息不丢失，梯度稳定。
-
-
----
-
-#### 实际例子：&lt;br&gt;
-
-假设你问“Transformer 是什么”：&lt;br&gt;
-* **第一层：**理解“Transformer”和“是什么”的基本关系。
-* **第二层：**结合上下文，知道你想要技术解释。
-* **更深层：**组织回答的逻辑，把技术细节串起来。 每一层输出传到下一层，逐步完善我的回答。
-
----
-#### 技术细节和难点 &lt;br&gt;
-* **参数独立：** 每层有自己的权重，训练时分别优化。
-* **计算成本：** 自注意力复杂度是 
-𝑂
-(
-𝑛
-2
-⋅
-𝑑
-)
-O(n 
-2
- ⋅d)（
-𝑛
-n 是序列长度，
-𝑑
-d 是维度），长序列很耗资源。
-* **梯度传递：**残差和归一化保证深层网络不崩溃。
-</code></pre>
+<p><strong>4. 归一化（Softmax）</strong><br>这些分数会通过 Softmax 函数归一化，变成概率分布。</p>
+<p>比如“我”这行的分数 [0.8, 0.3, 0.1, 0.6] 可能变成 [0.4, 0.15, 0.05, 0.3]，总和为 1。</p>
+<p><strong>5. 加权求和</strong><br>用这些概率去加权 V 向量，得到新的表示：</p>
+<p>“我”的新向量 &#x3D; 0.4 × “我”的 V + 0.15 × “喜欢”的 V + 0.05 × “吃”的 V + 0.3 × “苹果”的 V。</p>
+<p>这样，“我”的新表示融合了整句话的信息，但更关注“喜欢”和“苹果”。</p>
+<p><strong>输出</strong> <br><br>经过自注意力，每词的向量都更新了，带着上下文信息，然后传到下一层 Transformer 处理。</p>
+<hr>
+<h4 id="从一层传到下一层的处理过程"><a href="#从一层传到下一层的处理过程" class="headerlink" title="从一层传到下一层的处理过程 "></a>从一层传到下一层的处理过程 <br></h4><h5 id="每一层具体做什么？"><a href="#每一层具体做什么？" class="headerlink" title="每一层具体做什么？"></a>每一层具体做什么？</h5><p>每一层的处理本质相同，但作用逐渐深化：</p>
+<ul>
+<li><p><strong>第一层：</strong>可能关注词与词的基本关系，比如“我”和“喜欢”绑定，“吃”和“苹果”关联。</p>
+</li>
+<li><p><strong>第二层：</strong>基于第一层的结果，可能发现更高阶的模式，比如“我喜欢”是主谓结构，“吃苹果”是动作对象。</p>
+</li>
+<li><p><strong>更深层：</strong>可能理解整个句子的意图（表达喜好），甚至推理出隐藏信息（比如“苹果”是食物）。</p>
+</li>
+</ul>
+<h4 id="技术上角度"><a href="#技术上角度" class="headerlink" title="技术上角度"></a>技术上角度</h4><p><strong>自注意力：</strong> 每层重新计算词之间的关系，但因为输入更丰富（带着上一层的上下文），结果更精准。</p>
+<p><strong>前馈网络：</strong> 对每个词的表示做非线性变换，增强表达能力。</p>
+<p><strong>残差和归一化：</strong>保证信息不丢失，梯度稳定。</p>
+<hr>
+<h4 id="实际例子："><a href="#实际例子：" class="headerlink" title="实际例子："></a>实际例子：</h4><p>假设你问“Transformer 是什么”：</p>
+<ul>
+<li><p><strong>第一层：</strong>理解“Transformer”和“是什么”的基本关系。</p>
+</li>
+<li><p><strong>第二层：</strong>结合上下文，知道你想要技术解释。</p>
+</li>
+<li><p><strong>更深层：</strong>组织回答的逻辑，把技术细节串起来。 每一层输出传到下一层，逐步完善我的回答。</p>
+</li>
+</ul>
+<hr>
+<h4 id="技术细节和难点"><a href="#技术细节和难点" class="headerlink" title="技术细节和难点 "></a>技术细节和难点 <br></h4><ul>
+<li><p><strong>参数独立：</strong> 每层有自己的权重，训练时分别优化。</p>
+</li>
+<li><p><strong>计算成本：</strong> 自注意力复杂度是 𝑂(𝑛2⋅𝑑)O(n2⋅d)（𝑛n 是序列长度，𝑑d 是维度），长序列很耗资源。</p>
+</li>
+<li><p><strong>梯度传递：</strong>残差和归一化保证深层网络不崩溃。</p>
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://irisalex.github.io/blog/2025/03/13/Ai/" data-id="cm878dbke0003vujjc850a872" data-title="Ai" class="article-share-link">Share</a>
+      <a data-url="https://irisalex.github.io/blog/2025/03/13/Ai/" data-id="cm879ko9000033zjjaigr0rzm" data-title="大模型" class="article-share-link">Share</a>
       
       
       
@@ -221,7 +230,7 @@ d 是维度），长序列很耗资源。
       <ul>
         
           <li>
-            <a href="/blog/2025/03/13/Ai/">Ai</a>
+            <a href="/blog/2025/03/13/Ai/">大模型</a>
           </li>
         
           <li>
