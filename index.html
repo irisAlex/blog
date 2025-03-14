@@ -231,49 +231,55 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h3 id="最流行的-8-种网路协议"><a href="#最流行的-8-种网路协议" class="headerlink" title="最流行的 8 种网路协议"></a>最流行的 8 种网路协议</h3><p>目前网络上最流行的就是以下 8种网路模型。下面就一一为大家详解介绍一下这8种模型的用法与意义。<br><img src="/blog/images/pasted-58.png" alt="upload successful">  </p>
+        <h3 id="最流行的-8-种网路协议"><a href="#最流行的-8-种网路协议" class="headerlink" title="最流行的 8 种网路协议"></a>最流行的 8 种网路协议</h3><p>目前网络上最流行的就是以下 8种网路模型。下面就一一为大家详解介绍一下这8种模型的用法与意义。</p>
+ <img src="/blog/images/image.png" width = "100%" height = "100%" align=center />
+ 
 <p>让我们开始吧</p>
-<p><img src="/blog/images/pasted-59.png" alt="upload successful"></p>
-<h4 id="http"><a href="#http" class="headerlink" title="http"></a>http</h4><p><img src="/blog/images/pasted-60.png" alt="upload successful"> </p>
-<p> 首先是http , 它是 web 的支柱， http 使用请求 - 响应的模型。 </p>
-<p><img src="/blog/images/pasted-67.png" alt="upload successful"> </p>
-<p>客户端向服务器发送请求，包括 （图片，页面，api 数据等资源）<br>服务器返回带有 code 码的资源信息  </p>
-<p><img src="/blog/images/pasted-68.png" alt="upload successful"> </p>
-<p>信息包括 </p>
-<p><img src="/blog/images/pasted-70.png" alt="upload successful">  等</p>
-<p>成功以后返回 200 码。</p>
-<p><img src="/blog/images/pasted-73.png" alt="upload successful"> </p>
-<p>http 有 4种模型 分别是 </p>
-<p><img src="/blog/images/pasted-75.png" alt="upload successful"> </p>
-<ul>
-<li><p>POST </p>
-<p>  一般在创建资源的时候使用</p>
-</li>
-<li><p>GET<br>  在获取资源的时候使用</p>
-</li>
-<li><p>PUT </p>
-<p>  在更新资源的时候使用</p>
-</li>
-<li><p>DELETE  </p>
-<p>  在删除资源的时候使用</p>
-</li>
-</ul>
-<h4 id="https"><a href="#https" class="headerlink" title="https"></a>https</h4><p>   https 是基于 http + tls 传输安全性协议 添加的加密协议。</p>
-<p><img src="/blog/images/pasted-76.png" alt="upload successful"><br>首先 http 通过 tcp 建立链接，然后将彼此的公钥发送给对方，客户端通过对方传过来的公钥加密session key 然后发送到服务器，服务器解密 session key 然后通过 session key 加密的数据来进行数据传输</p>
-<p><img src="/blog/images/pasted-77.png" alt="upload successful"> </p>
-<p>https 通过 加密链接保证了数据的安全性 </p>
-<p><img src="/blog/images/pasted-80.png" alt="upload successful"><br>这种加密方式在互联网上可以保证数据数据的机密性。可以防止被黑客在中途截取数据<br>即使黑客拿到数据以后因为不知道加密的 session key 是什么所以即使拿到数据也是一堆 乱码。毫无意义。</p>
-<p><img src="/blog/images/pasted-81.png" alt="upload successful"> </p>
-<h4 id="http3"><a href="#http3" class="headerlink" title="http3"></a>http3</h4><p>http3 旨在 提高传输的速度与安全性。 修复以前版本中一些棘手的问题。<br>http 3 使用了 quic   基于 udp 协议而不是 tcp 协议来链接。 quic 可以最大限度的减少智能手机上网络切换的延迟问题。<br><img src="/blog/images/pasted-82.png" alt="upload successful"> </p>
-<p>quic 也消除了对头柱塞，即一个数据包丢失导致后边的数据包的流停滞问题。</p>
-<p><img src="/blog/images/pasted-83.png" alt="upload successful"> </p>
-<h4 id="web-socket"><a href="#web-socket" class="headerlink" title="web socket"></a>web socket</h4><p>在单个 tcp 中提供全双工的通信。<br><img src="/blog/images/pasted-84.png" alt="upload successful"><br>web socket 可以实现无缝实时的协作与实时数据流 </p>
-<p><img src="/blog/images/pasted-85.png" alt="upload successful"> </p>
-<p>初始的时候 ws 会重用 tcp 链接。 然后消息可以在最少的桢在俩个方向上流动。<br><img src="/blog/images/pasted-86.png" alt="upload successful"> </p>
-<p>ws 支持以非常低的开销立即发送小数据消息。非常适合 聊天，游戏，或实时更新的数据。 </p>
-<h4 id="tcp-udp"><a href="#tcp-udp" class="headerlink" title="tcp &#x2F; udp"></a>tcp &#x2F; udp</h4><p>tcp &#x2F; upd   是我们经常用的网络层传输协议。</p>
-<p><img src="/blog/images/pasted-87.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-59.png" width = "100%" height = "100%" align=center />
 
+<h4 id="http-协议"><a href="#http-协议" class="headerlink" title="http 协议"></a>http 协议</h4> <img src="/blog/images/pasted-60.png" width = "100%" height = "100%" align=center />
+
+<p><strong>首先是http , 它是 web 的支柱， http 使用请求 - 响应的模型。</strong> </p>
+ <img src="/blog/images/pasted-67.png" width = "100%" height = "100%" align=center />
+
+<p><strong>客户端向服务器发送请求，包括 （图片，页面，api 数据等资源）<br>服务器返回带有 code 码的资源信息</strong></p>
+ <img src="/blog/images/pasted-68.png" width = "100%" height = "100%" align=center />
+
+<p>信息包括 </p>
+<p> <img src="/blog/images/pasted-70.png" width = "100%" height = "100%" align=center />等</p>
+<p><strong>成功以后返回 200 码。</strong><br> <img src="/blog/images/pasted-73.png" width = "100%" height = "100%" align=center /></p>
+<p> <strong>http 有 4种模型 分别是</strong><br> <img src="/blog/images/pasted-75.png" width = "100%" height = "100%" align=center /></p>
+<ul>
+<li><strong>POST</strong><br>  <strong>一般在创建资源的时候使用</strong></li>
+<li><strong>GET</strong><br>  <strong>在获取资源的时候使用</strong></li>
+<li><strong>PUT</strong><br>  <strong>在更新资源的时候使用</strong></li>
+<li><strong>DELETE</strong><br>  <strong>在删除资源的时候使用</strong></li>
+</ul>
+<h4 id="https协议"><a href="#https协议" class="headerlink" title="https协议"></a>https协议</h4><p><strong>https 是基于 http + tls 传输安全性协议 添加的加密协议。</strong><br> <img src="/blog/images/pasted-76.png" width = "100%" height = "100%" align=center /></p>
+<p>首先 http 通过 tcp 建立链接，然后将彼此的公钥发送给对方，客户端通过对方传过来的公钥加密session key 然后发送到服务器，服务器解密 session key 然后通过 session key 加密的数据来进行数据传输</p>
+ <img src="/blog/images/pasted-77.png" width = "100%" height = "100%" align=center />
+
+<p>https 通过 加密链接保证了数据的安全性 </p>
+ <img src="/blog/images/pasted-80.png" width = "100%" height = "100%" align=center />
+![upload successful](/images/pasted-80.png) 
+
+<p>这种加密方式在互联网上可以保证数据数据的机密性。可以防止被黑客在中途截取数据<br>即使黑客拿到数据以后因为不知道加密的 session key 是什么所以即使拿到数据也是一堆 乱码。毫无意义。</p>
+ <img src="/blog/images/pasted-81.png" width = "100%" height = "100%" align=center />
+
+<h4 id="http3-协议"><a href="#http3-协议" class="headerlink" title="http3 协议"></a>http3 协议</h4><p>http3 旨在 提高传输的速度与安全性。 修复以前版本中一些棘手的问题。<br>http 3 使用了 quic   基于 udp 协议而不是 tcp 协议来链接。 quic 可以最大限度的减少智能手机上网络切换的延迟问题。<br> <img src="/blog/images/pasted-82.png" width = "100%" height = "100%" align=center /></p>
+<p>quic 也消除了对头柱塞，即一个数据包丢失导致后边的数据包的流停滞问题。</p>
+ <img src="/blog/images/pasted-83.png" width = "100%" height = "100%" align=center />
+ 
+<h4 id="web-socket-协议"><a href="#web-socket-协议" class="headerlink" title="web socket 协议"></a>web socket 协议</h4><p>在单个 tcp 中提供全双工的通信。<br> <img src="/blog/images/pasted-84.png" width = "100%" height = "100%" align=center /></p>
+<p>web socket 可以实现无缝实时的协作与实时数据流 </p>
+ <img src="/blog/images/pasted-85.png" width = "100%" height = "100%" align=center />
+ 
+<p>初始的时候 ws 会重用 tcp 链接。 然后消息可以在最少的桢在俩个方向上流动。</p>
+ <img src="/blog/images/pasted-86.png" width = "100%" height = "100%" align=center />
+
+<p>ws 支持以非常低的开销立即发送小数据消息。非常适合 聊天，游戏，或实时更新的数据。 </p>
+<h4 id="tcp-udp-协议"><a href="#tcp-udp-协议" class="headerlink" title="tcp &#x2F; udp 协议"></a>tcp &#x2F; udp 协议</h4><p>tcp &#x2F; upd   是我们经常用的网络层传输协议。</p>
+ <img src="/blog/images/pasted-87.png" width = "100%" height = "100%" align=center />
       
     </div>
     <footer class="article-footer">
@@ -355,7 +361,8 @@
 <p>它的思想很简单，数据首先会写入到一个叫做 MemTable 的内存结构中，在 MemTable 中数据是按照写入的 Key 来排序的。为了防止 MemTable 里面的数据因为机器掉电或者重启而丢失，一般会通过写 Write Ahead Log 的方式将数据备份在磁盘上。</p>
 <p>MemTable 在累积到一定规模时，它会被刷新生成一个新的文件，我们把这个文件叫做 SSTable（Sorted String Table）。当 SSTable 达到一定数量时，我们会将这些 SSTable 合并，减少文件的数量，因为 SSTable 都是有序的，所以合并的速度也很快。</p>
 <p>当从 LSM 树里面读数据时，我们首先从 MemTable 中查找数据，如果数据没有找到，再从 SSTable 中查找数据。因为存储的数据都是有序的，所以查找的效率是很高的，只是因为数据被拆分成多个 SSTable，所以读取的效率会低于 B+ 树索引。</p>
-<p><img src="/blog/images/pasted-54.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-54.png" width = "100%" height = "100%" align=center />
+
 <p>和 LSM 树类似的算法有很多，比如说 TokuDB 使用的名为 Fractal tree 的索引结构，它们的核心思想就是将随机 IO 变成顺序的 IO，从而提升写入的性能。</p>
 <p>在后面的缓存篇中，我也将给你着重介绍我们是如何使用 KV 型 NoSQL 存储来提升读性能的。所以你看，NoSQL 数据库补充关系型数据库的第一种方式就是提升读写性能。</p>
 <h2 id="场景补充"><a href="#场景补充" class="headerlink" title="# 场景补充"></a><a href="#%E5%9C%BA%E6%99%AF%E8%A1%A5%E5%85%85">#</a> 场景补充</h2><p>除了可以提升性能之外，NoSQL 数据库还可以在某些场景下作为传统关系型数据库的补充，来看一个具体的例子。</p>
@@ -364,9 +371,11 @@
 <p>你发现这类语句并不是都能使用到索引，只有后模糊匹配的语句才能使用索引。比如语句 <code>select * from product where name like ‘% 电冰箱’</code> 就没有使用到字段 <code>name</code> 上的索引，而 <code>select * from product where name like ‘索尼 %’</code> 就使用了 <code>name</code> 上的索引。而一旦没有使用索引就会扫描全表的数据，在性能上是无法接受的。</p>
 <p>于是你在谷歌上搜索了一下解决方案，发现大家都在使用开源组件 Elasticsearch 来支持搜索的请求，它本身是基于“倒排索引”来实现的， <strong>那么什么是倒排索引呢？</strong></p>
 <p>倒排索引是指将记录中的某些列做分词，然后形成的分词与记录 ID 之间的映射关系。比如说，你的垂直电商项目里面有以下记录：</p>
-<p><img src="/blog/images/pasted-55.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-55.png" width = "100%" height = "100%" align=center />
+
 <p>那么，我们将商品名称做简单的分词，然后建立起分词和商品 ID 的对应关系，就像下面展示的这样：</p>
-<p><img src="/blog/images/pasted-56.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-56.png" width = "100%" height = "100%" align=center />
+
 <p>这样，如果用户搜索电冰箱，就可以给他展示商品 ID 为 1 和 3 的两件商品了。</p>
 <p>而 Elasticsearch 作为一种常见的 NoSQL 数据库， <strong>就以倒排索引作为核心技术原理，为你提供了分布式的全文搜索服务，这在传统的关系型数据库中使用 SQL 语句是很难实现的。</strong> 所以你看，NoSQL 可以在某些业务场景下代替传统数据库提供数据存储服务。</p>
 <h2 id="提升扩展性"><a href="#提升扩展性" class="headerlink" title="# 提升扩展性"></a><a href="#%E6%8F%90%E5%8D%87%E6%89%A9%E5%B1%95%E6%80%A7">#</a> 提升扩展性</h2><p>另外，在扩展性方面，很多 NoSQL 数据库也有着先天的优势。还是以你的垂直电商系统为例，你已经为你的电商系统增加了评论系统，开始你的评估比较乐观，觉得电商系统的评论量级不会增长很快，所以就为它分了 8 个库，每个库拆分成 16 张表。</p>
@@ -378,7 +387,8 @@
 <li><p>其二是 Shard，也叫做分片，你可以理解为分库分表，即将数据按照某种规则拆分成多份，存储在不同的机器上。MongoDB 的 Sharding 特性一般需要三个角色来支持，一个是 Shard Server，它是实际存储数据的节点，是一个独立的 Mongod 进程；二是 Config Server，也是一组 Mongod 进程，主要存储一些元信息，比如说哪些分片存储了哪些数据等；最后是 Route Server，它不实际存储数据，仅仅作为路由使用，它从 Config Server 中获取元信息后，将请求路由到正确的 Shard Server 中。</p>
 </li>
 </ul>
-<p><img src="/blog/images/pasted-57.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-57.png" width = "100%" height = "100%" align=center />
+    
 <ul>
 <li>其三是负载均衡，就是当 MongoDB 发现 Shard 之间数据分布不均匀，会启动 Balancer 进程对数据做重新的分配，最终让不同 Shard Server 的数据可以尽量的均衡。当我们的 Shard Server 存储空间不足需要扩容时，数据会自动被移动到新的 Shard Server 上，减少了数据迁移和验证的成本。</li>
 </ul>
@@ -436,7 +446,8 @@
         <h1 id="如何保证分库分表后-ID-的全局唯一性？"><a href="#如何保证分库分表后-ID-的全局唯一性？" class="headerlink" title=" 如何保证分库分表后 ID 的全局唯一性？"></a><a href="#_10%E4%B8%A8%E5%8F%91%E5%8F%B7%E5%99%A8-%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E5%90%8E-id-%E7%9A%84%E5%85%A8%E5%B1%80%E5%94%AF%E4%B8%80%E6%80%A7"></a> 如何保证分库分表后 ID 的全局唯一性？</h1><p>在之前的内容分享中我带你了解了分布式存储两个核心问题：数据冗余和数据分片，以及在传统关系型数据库中是如何解决的。</p>
 <p>当我们面临高并发的查询数据请求时，可以使用主从读写分离的方式，部署多个从库分摊读压力；</p>
 <p>当存储的数据量达到瓶颈时，我们可以将数据分片存储在多个节点上，降低单个存储节点的存储压力，此时我们的架构变成了下面这个样子：</p>
-<p><img src="/blog/images/pasted-50.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-50.png" width = "100%" height = "100%" align=center />
+
 <p>你可以看到，我们通过分库分表和主从读写分离的方式解决了数据库的扩展性问题，但是在 09 讲我也提到过，数据库在分库分表之后，我们在使用数据库时存在的许多限制，比方说查询的时候必须带着分区键；一些聚合类的查询（像是 <code>count()</code>）性能较差，需要考虑使用计数器等其它的解决方案，其实分库分表还有一个问题我在 09 中没有提到，就是 <strong>主键的全局唯一性的问题</strong> 。本节课，我将带你一起来了解，在分库分表后如何生成全局唯一的数据库主键。</p>
 <p>不过，在探究这个问题之前，你需要对「使用什么字段作为主键」这个问题有所了解，这样才能为我们后续探究如何生成全局唯一的主键做好铺垫。</p>
 <h2 id="数据库的主键要如何选择？"><a href="#数据库的主键要如何选择？" class="headerlink" title=" 数据库的主键要如何选择？"></a><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%B8%BB%E9%94%AE%E8%A6%81%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9"></a> 数据库的主键要如何选择？</h2><p>数据库中的每一条记录都需要有一个唯一的标识，依据数据库的第二范式，数据库中每一个表中都需要有一个唯一的主键，其他数据元素和主键一一对应。</p>
@@ -459,15 +470,18 @@
 <p>我们在获取内容的评论列表时，需要按照时间序倒序排列，因为 ID 是时间上有序的，所以我们就可以按照评论 ID 的倒序排列。而如果评论 ID 不是在时间上有序的话，我们就需要在评论列表中再存储一个多余的创建时间的列用作排序，假设内容 ID、评论 ID 和时间都是使用 8 字节存储，我们就要多出 50% 的存储空间存储时间字段，造成了存储空间上的浪费。</p>
 <p><strong>另一个原因在于 ID 有序也会提升数据的写入性能。</strong></p>
 <p>我们知道 MySQL InnoDB 存储引擎使用 <code>B+ 树</code> 存储索引数据，而主键也是一种索引。索引数据在 <code>B+ 树</code> 中是有序排列的，就像下面这张图一样，图中 2，10，26 都是记录的 ID，也是索引数据。</p>
-<p><img src="/blog/images/pasted-51.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-51.png" width = "100%" height = "100%" align=center />
+
 <p>这时，当插入的下一条记录的 ID 是递增的时候，比如插入 30 时，数据库只需要把它追加到后面就好了。但是如果插入的数据是无序的，比如 ID 是 13，那么数据库就要查找 13 应该插入的位置，再挪动 13 后面的数据，这就造成了多余的数据移动的开销。</p>
-<p><img src="/blog/images/pasted-52.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-52.png" width = "100%" height = "100%" align=center />
+
 <p>我们知道机械磁盘在完成随机的写时，需要先做 「寻道」找到要写入的位置，也就是让磁头找到对应的磁道，这个过程是非常耗时的。<strong>而顺序写就不需要寻道，会大大提升索引的写入性能</strong> 。</p>
 <p><strong>UUID 不能作为 ID 的另一个原因是它不具备业务含义，</strong> 其实现实世界中使用的 ID 中都包含有一些有意义的数据，这些数据会出现在 ID 的固定的位置上。比如说我们使用的身份证的前六位是地区编号；7～14 位是身份证持有人的生日；不同城市电话号码的区号是不同的；你从手机号码的的前三位就可以看出这个手机号隶属于哪一个运营商。而如果生成的 ID 可以被反解，那么从反解出来的信息中我们可以对 ID 来做验证，我们可以从中知道这个 ID 的生成时间，从哪个机房的发号器中生成的，为哪个业务服务的，对于问题的排查有一定的帮助。</p>
 <p>最后，UUID 是由 32 个 16 进制数字组成的字符串，如果作为数据库主键使用比较耗费空间。</p>
 <p>你能看到，UUID 方案有很大的局限性，也是我不建议你用它的原因，而 twitter 提出的 Snowflake 算法完全可以弥补 UUID 存在的不足，因为它不仅算法简单易实现，也满足 ID 所需要的全局唯一性，单调递增性，还包含一定的业务上的意义。</p>
 <p>Snowflake 的核心思想是将 64bit 的二进制数字分成若干部分，每一部分都存储有特定含义的数据，比如说时间戳、机器 ID、序列号等等，最终生成全局唯一的有序 ID。它的标准算法是这样的：</p>
-<p><img src="/blog/images/pasted-53.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-53.png" width = "100%" height = "100%" align=center />
+
 <p>从上面这张图中我们可以看到，41 位的时间戳大概可以支撑 <code>pow(2,41)/1000/60/60/24/365</code> 年，约等于 69 年，对于一个系统是足够了。</p>
 <p>如果你的系统部署在多个机房，那么 10 位的机器 ID 可以继续划分为 2～3 位的 IDC 标示（可以支撑 4 个或者 8 个 IDC 机房）和 7～8 位的机器 ID（支持 128-256 台机器）；12 位的序列号代表着每个节点每毫秒最多可以生成 4096 的 ID。</p>
 <p>不同公司也会依据自身业务的特点对 Snowflake 算法做一些改造，比如说减少序列号的位数增加机器 ID 的位数以支持单 IDC 更多的机器，也可以在其中加入业务 ID 字段来区分不同的业务。 <strong>比方说我现在使用的发号器的组成规则就是：</strong> 1 位兼容位恒为 0 + 41 位时间信息 + 6 位 IDC 信息（支持 64 个 IDC）+ 6 位业务信息（支持 64 个业务）+ 10 位自增信息（每毫秒支持 1024 个号）</p>
@@ -545,7 +559,8 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h1 id="数据库优化方案-2：写入数据量增加时，如何实现分库分表？"><a href="#数据库优化方案-2：写入数据量增加时，如何实现分库分表？" class="headerlink" title="数据库优化方案 2：写入数据量增加时，如何实现分库分表？"></a><a href="#_%E4%B8%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88-2-%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%E9%87%8F%E5%A2%9E%E5%8A%A0%E6%97%B6-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8"></a>数据库优化方案 2：写入数据量增加时，如何实现分库分表？</h1><p>上次我们学习了在高并发下数据库的一种优化方案：读写分离，它就是依靠主从复制的技术使得数据库实现了数据复制为多份，增强了抵抗 <strong>大量并发读请求的能力</strong>，提升了数据库的查询性能的同时，也提升了数据的安全性，当某一个数据库节点，无论是主库还是从库发生故障时，我们还有其他的节点中存储着全量的数据，保证数据不会丢失。此时，你的电商系统的架构图变成了下面这样：</p>
-<p><img src="/blog/images/pasted-46.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-46.png" width = "100%" height = "100%" align=center />
+
 <p>这时，公司 CEO 突然传来一个好消息，运营推广持续带来了流量，你所设计的电商系统的订单量突破了五千万，订单数据都是单表存储的，你的压力倍增，因为无论是数据库的查询还是写入性能都在下降，数据库的磁盘空间也在报警。所以，你主动分析现阶段自己需要考虑的问题，并寻求高效的解决方式，以便系统能正常运转下去。你考虑的问题主要有以下几点：</p>
 <ol>
 <li><p>系统正在持续不断地的发展</p>
@@ -575,7 +590,8 @@
 <p>垂直拆分的原则一般是按照业务类型来拆分，核心思想是专库专用，将业务耦合度比较高的表拆分到单独的库中。举个形象的例子就是在整理衣服的时候，将羽绒服、毛衣、T 恤分别放在不同的格子里。这样可以解决我在开篇提到的第三个问题：把不同的业务的数据分拆到不同的数据库节点上，这样一旦数据库发生故障时只会影响到某一个模块的功能，不会影响到整体功能，从而实现了数据层面的故障隔离。</p>
 <p><strong>我还是以微博系统为例来给你说明一下。</strong></p>
 <p>在微博系统中有和用户相关的表，有和内容相关的表，有和关系相关的表，这些表都存储在主库中。在拆分后，我们期望用户相关的表分拆到用户库中，内容相关的表分拆到内容库中，关系相关的表分拆到关系库中。</p>
-<p><img src="/blog/images/pasted-47.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-47.png" width = "100%" height = "100%" align=center />
+
 <p>对数据库进行垂直拆分是一种偏常规的方式，这种方式其实你会比较常用，不过拆分之后，虽然可以暂时缓解存储容量的瓶颈，但并不是万事大吉，因为数据库垂直拆分后依然不能解决某一个业务模块的数据大量膨胀的问题，一旦你的系统遭遇某一个业务库的数据量暴增，在这个情况下，你还需要继续寻找可以弥补的方式。</p>
 <p>比如微博关系量早已经过了千亿，单一的数据库或者数据表已经远远不能满足存储和查询的需求了， **这个时候，你需要将数据拆分到多个数据库和数据表中，也就是对数据库和数据表做水平拆分了 ** 。</p>
 <h2 id="如何对数据库做水平拆分"><a href="#如何对数据库做水平拆分" class="headerlink" title=" 如何对数据库做水平拆分"></a><a href="#%E5%A6%82%E4%BD%95%E5%AF%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E5%81%9A%E6%B0%B4%E5%B9%B3%E6%8B%86%E5%88%86"></a> 如何对数据库做水平拆分</h2><p>和垂直拆分的关注点不同：</p>
@@ -589,14 +605,17 @@
 <p>这种拆分规则比较适用于实体表，比如说用户表，内容表，我们一般按照这些实体表的 ID 字段来拆分。比如说我们想把用户表拆分成 16 个库，64 张表，那么可以先对用户 ID 做哈希，哈希的目的是将 ID 尽量打散，然后再对 16 取余，这样就得到了分库后的索引值；对 64 取余，就得到了分表后的索引值。</p>
 </li>
 </ol>
-<p><img src="/blog/images/pasted-48.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-48.png" width = "100%" height = "100%" align=center />
+    
 <ol start="2">
 <li><p>另一种比较常用的是按照某一个字段的 <strong>区间</strong> 来拆分，比较常用的是时间字段。</p>
 <p>你知道在内容表里面有「创建时间」的字段，而我们也是按照时间来查看一个人发布的内容。我们可能会要看昨天的内容，也可能会看一个月前发布的内容，这时就可以按照创建时间的区间来分库分表，比如说可以把一个月的数据放入一张表中，这样在查询时就可以根据创建时间先定位数据存储在哪个表里面，再按照查询条件来查询。</p>
 <p>一般来说，列表数据可以使用这种拆分方式，比如一个人一段时间的订单，一段时间发布的内容。但是这种方式可能会存在明显的热点，这很好理解嘛，你当然会更关注最近我买了什么，发了什么，所以查询的 QPS 也会更多一些，对性能有一定的影响。另外，使用这种拆分规则后，数据表要提前建立好，否则如果时间到了 2020 年元旦，DBA（Database Administrator，数据库管理员）却忘记了建表，那么 2020 年的数据就没有库表可写了，就会发生故障了。</p>
 </li>
 </ol>
-<p><img src="/blog/images/pasted-49.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-49.png" width = "100%" height = "100%" align=center />
+    
+
 <p>数据库在分库分表之后，数据的访问方式也有了极大的改变，<strong>原先只需要根据查询条件到从库中查询数据即可，现在则需要先确认数据在哪一个库表中，再到那个库表中查询数据</strong> 。这种复杂度也可以通过数据库中间件来解决，我们在上一节中已经有所讲解，这里就不再赘述了，不过，我想再次强调的是你需要对所使用数据库中间件的原理有足够的了解和足够强的运维上的把控能力。</p>
 <p>不过，你要知道的是，分库分表虽然能够解决数据库扩展性的问题，但是它也给我们的使用带来了一些问题。</p>
 <h2 id="解决分库分表引入的问题"><a href="#解决分库分表引入的问题" class="headerlink" title="# 解决分库分表引入的问题"></a><a href="#%E8%A7%A3%E5%86%B3%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E5%BC%95%E5%85%A5%E7%9A%84%E9%97%AE%E9%A2%98">#</a> 解决分库分表引入的问题</h2><p>分库分表引入的一个最大的问题就是 <strong>引入了分库分表键，也叫做分区键，</strong> 也就是我们对数据库做分库分表所依据的字段。</p>
@@ -655,7 +674,8 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h1 id="数据库优化方案-1：查询请求增加时，如何做主从分离？"><a href="#数据库优化方案-1：查询请求增加时，如何做主从分离？" class="headerlink" title=" 数据库优化方案 1：查询请求增加时，如何做主从分离？"></a><a href="%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88-1-%E6%9F%A5%E8%AF%A2%E8%AF%B7%E6%B1%82%E5%A2%9E%E5%8A%A0%E6%97%B6-%E5%A6%82%E4%BD%95%E5%81%9A%E4%B8%BB%E4%BB%8E%E5%88%86%E7%A6%BB"></a> 数据库优化方案 1：查询请求增加时，如何做主从分离？</h1><p>我们用池化技术解决了数据库连接复用的问题，这时，你的垂直电商系统虽然整体架构上没有变化，但是和数据库交互的过程有了变化，在你的 Web 工程和数据库之间增加了数据库连接池，减少了频繁创建连接的成本，从上节课的测试来看性能上可以提升 80%。现在的架构图如下所示：</p>
-<p><img src="/blog/images/pasted-42.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-42.png" width = "100%" height = "100%" align=center />
+
 <p>此时，你的数据库还是单机部署，依据一些云厂商的 Benchmark 的结果，<strong>在 4 核 8G 的机器上运 MySQL 5.7 时，大概可以支撑 500 的 TPS 和 10000 的 QPS</strong>。这时，运营负责人说正在准备双十一活动，并且公司层面会继续投入资金在全渠道进行推广，这无疑会引发查询量骤然增加的问题。那么今天，我们就一起来看看当查询请求增加时，应该如何做主从分离来解决问题。</p>
 <h2 id="主从读写分离"><a href="#主从读写分离" class="headerlink" title=" 主从读写分离"></a><a href="#%E4%B8%BB%E4%BB%8E%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB"></a> 主从读写分离</h2><p>其实，大部分系统的访问模型是 <strong>读多写少</strong>，读写请求量的差距可能达到几个数量级。</p>
 <p>这很好理解，刷朋友圈的请求量肯定比发朋友圈的量大，淘宝上一个商品的浏览量也肯定远大于它的下单量。因此，我们优先考虑数据库如何抗住更高的查询请求，那么首先你需要把读写流量区分开，因为这样才方便针对读流量做单独的扩展，这就是我们所说的主从读写分离。</p>
@@ -677,13 +697,15 @@
 <li>同时，从库还会创建一个 SQL 线程读取 relay log 中的内容，并且在从库中做回放，最终实现主从的一致性。这是一种比较常见的主从复制方式。</li>
 </ol>
 <p>在这个方案中，使用独立的 log dump 线程是一种异步的方式，可以避免对主库的主体更新流程产生影响，而从库在接收到信息后并不是写入从库的存储中，是写入一个 relay log，是避免写入从库实际存储会比较耗时，最终造成从库和主库延迟变长。</p>
-<p><img src="/blog/images/pasted-43.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-43.png" width = "100%" height = "100%" align=center />
+
 <p>你会发现，基于性能的考虑，主库的写入流程并没有等待主从同步完成就会返回结果，那么在极端的情况下，比如说主库上 binlog 还没有来得及刷新到磁盘上就出现了磁盘损坏或者机器掉电，就会导致 binlog 的丢失，最终造成主从数据的不一致。 <strong>不过，这种情况出现的概率很低，对于互联网的项目来说是可以容忍的。</strong></p>
 <p>做了主从复制之后，我们就可以在写入时只写主库，在读数据时只读从库，这样即使写请求会锁表或者锁记录，也不会影响到读请求的执行。同时呢，在读流量比较大的情况下，我们可以部署多个从库共同承担读流量，这就是所说的 <strong>一主多从</strong> 部署方式，在你的垂直电商项目中就可以通过这种方式来抵御较高的并发读流量。另外，从库也可以当成一个备库来使用，以避免主库故障导致数据丢失。</p>
 <p><strong>那么你可能会说，是不是我无限制地增加从库的数量就可以抵抗大量的并发呢？</strong> 实际上并不是的。因为随着从库数量增加，从库连接上来的 IO 线程比较多，<strong>主库也需要创建同样多的 log dump 线程来处理复制的请求</strong>，对于主库资源消耗比较高，同时受限于主库的网络带宽，所以在实际使用中，<strong>一般一个主库最多挂 3～5 个从库</strong>。</p>
 <p><strong>当然，主从复制也有一些缺陷，</strong> 除了带来了部署上的复杂度，还有就是会带来一定的主从同步的延迟，这种延迟有时候会对业务产生一定的影响，我举个例子你就明白了。</p>
 <p>在发微博的过程中会有些同步的操作，像是更新数据库的操作，也有一些异步的操作，比如说将微博的信息同步给审核系统，所以我们在更新完主库之后，会将微博的 ID 写入消息队列，再由队列处理机依据 ID 在从库中获取微博信息再发送给审核系统。 <strong>此时如果主从数据库存在延迟，会导致在从库中获取不到微博信息，整个流程会出现异常。</strong></p>
-<p><img src="/blog/images/pasted-44.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-44.png" width = "100%" height = "100%" align=center />
+
 <p>这个问题解决的思路有很多，<strong>核心思想就是尽量不去从库中查询信息</strong> ，纯粹以上面的例子来说，我就有三种解决方案：</p>
 <ol>
 <li><p><strong>第一种方案是数据的冗余。</strong></p>
@@ -718,7 +740,9 @@
 <p>它一般使用标准的 MySQL 通信协议，所以可以很好地支持多语言。由于它是独立部署的，所以也比较方便进行维护升级，比较适合有一定运维能力的大中型团队使用。它的缺陷是所有的 SQL 语句都需要跨两次网络：从应用到代理层和从代理层到数据源，所以在性能上会有一些损耗。</p>
 </li>
 </ol>
-<p><img src="/blog/images/pasted-45.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-45.png" width = "100%" height = "100%" align=center />
+    
+
 <p>这些中间件，对你而言，可能并不陌生，但是我想让你注意到是， <strong>在使用任何中间件的时候一定要保证对于中间件有足够深入的了解，否则一旦出了问题没法快速地解决就悲剧了。</strong></p>
 <p>**我之前的一个项目中， ** 一直使用自研的一个组件来实现分库分表，后来发现这套组件有一定几率会产生对数据库多余的连接，于是团队讨论后决定替换成 Sharding-JDBC。原本以为是一次简单的组件切换，结果上线后发现两个问题：</p>
 <ul>
@@ -792,7 +816,8 @@
       
         <h1 id="池化技术：如何减少频繁创建数据库连接的性能损耗？"><a href="#池化技术：如何减少频繁创建数据库连接的性能损耗？" class="headerlink" title="池化技术：如何减少频繁创建数据库连接的性能损耗？"></a>池化技术：如何减少频繁创建数据库连接的性能损耗？</h1><p>来想象这样一个场景，一天，公司 CEO 把你叫到会议室，告诉你公司看到了一个新的商业机会，希望你能带领一名兄弟，迅速研发出一套面向某个垂直领域的电商系统。</p>
 <p>在人手紧张，时间不足的情况下，为了能够完成任务，你毫不犹豫地采用了 <strong>最简单的架构</strong> ：前端一台 Web 服务器运行业务代码，后端一台数据库服务器存储业务数据。</p>
-<p><img src="/blog/images/pasted-39.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-39.png" width = "100%" height = "100%" align=center />
+
 <p>这个架构图是我们每个人最熟悉的，最简单的架构原型，很多系统在一开始都是长这样的，只是随着业务复杂度的提高，架构做了叠加，然后看起来就越来越复杂了。</p>
 <p>再说回我们的垂直电商系统，系统一开始上线之后，虽然用户量不大，但运行平稳，你很有成就感，不过 CEO 觉得用户量太少了，所以紧急调动运营同学做了一次全网的流量推广。</p>
 <p>这一推广很快带来了一大波流量， <strong>但这时，系统的访问速度开始变慢。</strong></p>
@@ -802,7 +827,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -i: 指定网卡</span></span><br><span class="line">tcpdump -i bond0 -nn -tttt port 4490</span><br><span class="line">  </span><br><span class="line">        Copied!</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
 
 <p>命令抓取了线上 MySQL 建立连接的网络包来做分析，从抓包结果来看，整个 MySQL 的连接过程可以分为两部分：</p>
-<p><img src="/blog/images/pasted-40.png" alt="upload successful">  </p>
+ <img src="/blog/images/pasted-40.png" width = "100%" height = "100%" align=center /> 
+
 <ul>
 <li><p><strong>第一部分是前三个数据包</strong></p>
 <p>第一个数据包是客户端向服务端发送的一个 SYN 包，</p>
@@ -858,7 +884,8 @@
 <li>当队列中的任务堆积满了的时候，则继续创建线程，直到达到 maxThreadCount；</li>
 <li>当线程数达到 maxTheadCount 时还有新的任务提交，那么我们就不得不将它们丢弃了。</li>
 </ul>
-<p><img src="/blog/images/pasted-41.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-41.png" width = "100%" height = "100%" align=center />
+
 <p>这个任务处理流程看似简单，实际上有很多坑，你在使用的时候一定要注意。</p>
 <p><strong>首先，</strong> JDK 实现的这个线程池优 <strong>先把任务放入队列暂存起来，而不是创建更多的线程</strong> ，它比较适用于执行 CPU 密集型的任务，也就是需要执行大量 CPU 运算的任务。这是为什么呢？因为执行 CPU 密集型的任务时 CPU 比较繁忙，因此只需要创建和 CPU 核数相当的线程就好了，多了反而会造成线程上下文切换，降低任务执行效率。所以当当前线程数超过核心线程数时，线程池不会增加线程，而是放在队列里等待核心线程空闲下来。</p>
 <p>但是，我们平时开发的 Web 系统通常都有大量的 IO 操作，比方说查询数据库、查询缓存等等。任务在执行 IO 操作的时候 CPU 就空闲了下来，这时如果增加执行任务的线程数而不是把任务暂存在队列中，就可以在单位时间内执行更多的任务，大大提高了任务执行的吞吐量。所以你看 Tomcat 使用的线程池就不是 JDK 原生的线程池，而是做了一些改造，当线程数超过 coreThreadCount 之后会优先创建线程，直到线程数到达 maxThreadCount，这样就比较适合于 Web 系统大量 IO 操作的场景了，你在实际运用过程中也可以参考借鉴。</p>
@@ -937,10 +964,12 @@
 <li>搜索：用户的搜索，内容的搜索。</li>
 </ul>
 <p>而部署方式遵照最简单的三层部署架构，负载均衡负责请求的分发，应用服务器负责业务逻辑的处理，数据库负责数据的存储落地。这时，所有模块的业务代码都混合在一起了，数据也都存储在一个库里。</p>
-<p><img src="/blog/images/pasted-33.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-33.png" width = "100%" height = "100%" align=center />
+
 <h4 id="存储层的扩展性"><a href="#存储层的扩展性" class="headerlink" title="存储层的扩展性"></a><a href="#%E5%AD%98%E5%82%A8%E5%B1%82%E7%9A%84%E6%89%A9%E5%B1%95%E6%80%A7" title="存储层的扩展性"></a>存储层的扩展性</h4><p>无论是存储的数据量，还是并发访问量，不同的业务模块之间的量级相差很大，比如说成熟社区中，关系的数据量是远远大于用户数据量的，但是用户数据的访问量却远比关系数据要大。所以假如存储目前的瓶颈点是容量，那么我们只需要针对关系模块的数据做拆分就好了，而不需要拆分用户模块的数据。 所以存储拆分首先考虑的维度是业务维度。</p>
 <p>拆分之后，这个简单的社区系统就有了用户库、内容库、评论库、点赞库和关系库。这么做还能隔离故障，某一个库「挂了」不会影响到其它的数据库。</p>
-<p><img src="/blog/images/pasted-34.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-34.png" width = "100%" height = "100%" align=center />
+
 <p>按照业务拆分，在一定程度上提升了系统的扩展性，但系统运行时间长了之后，单一的业务数据库在容量和并发请求量上仍然会超过单机的限制。 这时，我们就需要针对数据库做第二次拆分。</p>
 <p>这次拆分是按照数据特征做水平的拆分 ，比如说我们可以给用户库增加两个节点，然后按照某些算法将用户的数据拆分到这三个库里面，具体的算法我会在后面讲述数据库分库分表时和你细说。</p>
 <p>水平拆分之后，我们就可以让数据库突破单机的限制了。但这里要注意，我们不能随意地增加节点，因为一旦增加节点就需要手动地迁移数据，成本还是很高的。所以基于长远的考虑，我们最好一次性增加足够的节点以避免频繁地扩容。</p>
@@ -948,9 +977,11 @@
 <h4 id="业务层的扩展性"><a href="#业务层的扩展性" class="headerlink" title="业务层的扩展性"></a><a href="#%E4%B8%9A%E5%8A%A1%E5%B1%82%E7%9A%84%E6%89%A9%E5%B1%95%E6%80%A7" title="业务层的扩展性"></a>业务层的扩展性</h4><p>我们一般会从三个维度考虑业务层的拆分方案，它们分别是：业务纬度 ，重要性纬度 和 请求来源纬度。</p>
 <p>首先，我们需要把相同业务的服务拆分成单独的业务池，比方说上面的社区系统中，我们可以按照业务的维度拆分成用户池、内容池、关系池、评论池、点赞池和搜索池。</p>
 <p>每个业务依赖独自的数据库资源，不会依赖其它业务的数据库资源。这样当某一个业务的接口成为瓶颈时，我们只需要扩展业务的池子，以及确认上下游的依赖方就可以了，这样就大大减少了扩容的复杂度。</p>
-<p><img src="/blog/images/pasted-35.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-35.png" width = "100%" height = "100%" align=center />
+
 <p>除此之外，我们还可以根据业务接口的重要程度，把业务分为核心池和非核心池 （池子就是一组机器组成的集群） 。打个比方，就关系池而言，关注、取消关注接口相对重要一些，可以放在核心池里面；拉黑和取消拉黑的操作就相对不那么重要，可以放在非核心池里面。这样，我们可以优先保证核心池的性能，当整体流量上升时优先扩容核心池，降级部分非核心池的接口，从而保证整体系统的稳定性。</p>
-<p><img src="/blog/images/pasted-36.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-36.png" width = "100%" height = "100%" align=center />
+
 <p>最后，你还可以根据接入客户端类型的不同做业务池的拆分。比如说，服务于客户端接口的业务可以定义为外网池，服务于小程序或者 HTML5 页面的业务可以定义为 H5 池，服务于内部其它部门的业务可以定义为内网池，等等。</p>
 
       
@@ -1000,7 +1031,8 @@
 <p>可用性与 MTBF 和 MTTR 的值息息相关，我们可以用下面的公式表示它们之间的关系：</p>
 <p>Availability &#x3D; MTBF &#x2F; (MTBF + MTTR)</p>
 <p>这个公式计算出的结果是一个比例，而这个比例代表着系统的可用性。一般来说，我们会使用几个九来描述系统的可用性。</p>
-<p><img src="/blog/images/pasted-31.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-31.png" width = "100%" height = "100%" align=center />
+
 <p>其实通过这张图你可以发现，一个九和两个九的可用性是很容易达到的，只要没有蓝翔技校的铲车搞破坏，基本上可以通过人肉运维的方式实现。</p>
 <p>三个九之后，系统的年故障时间从 3 天锐减到 8 小时。到了四个九之后，年故障时间缩减到 1 小时之内。在这个级别的可用性下，你可能需要建立完善的运维值班体系、故障处理流程和业务变更流程。你可能还需要在系统设计上有更多的考虑。比如，在开发中你要考虑，如果发生故障，是否不用人工介入就能自动恢复。当然了，在工具建设方面，你也需要多加完善，以便快速排查故障原因，让系统快速恢复。</p>
 <p>到达五个九之后，故障就不能靠人力恢复了。想象一下，从故障发生到你接收报警，再到你打开电脑登录服务器处理问题，时间可能早就过了十分钟了。所以这个级别的可用性考察的是系统的容灾和自动恢复的能力，让机器来处理故障，才会让可用性指标提升一个档次。</p>
@@ -1020,7 +1052,8 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">举个例子，Nginx 可以配置当某一个 Tomcat 出现大于 500 的请求的时候，重试请求另一个 Tomcat 节点，就像下面这样：</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/blog/images/pasted-32.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-32.png" width = "100%" height = "100%" align=center />
+
 <p>针对不对等节点的 failover 机制会复杂很多。比方说我们有一个主节点，有多台备用节点，这些备用节点可以是热备（同样在线提供服务的备用节点），也可以是冷备（只作为备份使用），那么我们就需要在代码中控制如何检测主备机器是否故障，以及如何做主备切换。</p>
 <p>使用最广泛的故障检测机制是「心跳」。你可以在客户端上定期地向主节点发送心跳包，也可以从备份节点上定期发送心跳包。当一段时间内未收到心跳包，就可以认为主节点已经发生故障，可以触发选主的操作。</p>
 <p>选主的结果需要在多个备份节点上达成一致，所以会使用某一种分布式一致性算法，比方说 Paxos，Raft。</p>
@@ -1126,7 +1159,8 @@
 <p>分位值有很多种，比如 90 分位、95 分位、75 分位。以 90 分位为例，我们把这段时间请求的 响应时间从小到大排序，假如一共有 100 个请求，那么排在第 90 位的响应时间就是 90 分位值。分位值排除了偶发极慢请求对于数据的影响，能够很好地反应这段时间的性能情况，分位值越大，对于慢请求的影响就越敏感。</p>
 </li>
 </ul>
-<p><img src="/blog/images/pasted-29.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-29.png" width = "100%" height = "100%" align=center />
+
 <p>分位值是最适合作为时间段内，响应时间统计值来使用的，在实际工作中也应用最多。除此之外，平均值也可以作为一个参考值来使用。</p>
 <p>我在上面提到，脱离了并发来谈性能是没有意义的，我们通常使用 吞吐量 或者 同时在线用户数 来度量并发和流量，使用吞吐量的情况会更多一些。但是你要知道，这两个指标是呈倒数关系的。</p>
 <p>这很好理解，响应时间 1s 时，吞吐量是每秒 1 次，响应时间缩短到 10ms，那么吞吐量就上升到每秒 100 次。所以，一般我们度量性能时都会同时兼顾吞吐量和响应时间，比如我们设立性能优化的目标时通常会这样表述：在每秒 1 万次的请求量下，响应时间 99 分位值在 10ms 以下。</p>
@@ -1157,7 +1191,8 @@
 <p>其中，s 还是表示并行进程数，p 表示任务中并行部分的占比。当 p 为 1 时，也就是完全并行时，加速比与并行进程数相等；当 p 为 0 时，即完全串行时，加速比为 1，也就是说完全无加速；当 s 趋近于无穷大的时候，加速比就等于 1&#x2F;(1-p)，你可以看到它完全和 p 成正比。特别是，当 p 为 1 时，加速比趋近于无穷大。</p>
 <p>以上公式的推导过程有些复杂，你只需要记住结论就好了。</p>
 <p>我们似乎找到了解决问题的银弹，<strong>是不是无限制地增加处理核心数就能无限制地提升性能，从而提升系统处理高并发的能力呢？</strong>很遗憾，随着并发进程数的增加，并行的任务对于系统资源的争抢也会愈发严重。在某一个临界点上继续增加并发进程数，反而会造成系统性能的下降，这就是性能测试中的 拐点模型。</p>
-<p><img src="/blog/images/pasted-30.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-30.png" width = "100%" height = "100%" align=center />
+
 <p>从图中可以发现：</p>
 <ol>
 <li><p>并发用户数处于轻压力区时，响应时间平稳，吞吐量和并发用户数线性相关。</p>

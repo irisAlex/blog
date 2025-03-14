@@ -73,7 +73,8 @@
       
         <h1 id="池化技术：如何减少频繁创建数据库连接的性能损耗？"><a href="#池化技术：如何减少频繁创建数据库连接的性能损耗？" class="headerlink" title="池化技术：如何减少频繁创建数据库连接的性能损耗？"></a>池化技术：如何减少频繁创建数据库连接的性能损耗？</h1><p>来想象这样一个场景，一天，公司 CEO 把你叫到会议室，告诉你公司看到了一个新的商业机会，希望你能带领一名兄弟，迅速研发出一套面向某个垂直领域的电商系统。</p>
 <p>在人手紧张，时间不足的情况下，为了能够完成任务，你毫不犹豫地采用了 <strong>最简单的架构</strong> ：前端一台 Web 服务器运行业务代码，后端一台数据库服务器存储业务数据。</p>
-<p><img src="/blog/images/pasted-39.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-39.png" width = "100%" height = "100%" align=center />
+
 <p>这个架构图是我们每个人最熟悉的，最简单的架构原型，很多系统在一开始都是长这样的，只是随着业务复杂度的提高，架构做了叠加，然后看起来就越来越复杂了。</p>
 <p>再说回我们的垂直电商系统，系统一开始上线之后，虽然用户量不大，但运行平稳，你很有成就感，不过 CEO 觉得用户量太少了，所以紧急调动运营同学做了一次全网的流量推广。</p>
 <p>这一推广很快带来了一大波流量， <strong>但这时，系统的访问速度开始变慢。</strong></p>
@@ -83,7 +84,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -i: 指定网卡</span></span><br><span class="line">tcpdump -i bond0 -nn -tttt port 4490</span><br><span class="line">  </span><br><span class="line">        Copied!</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
 
 <p>命令抓取了线上 MySQL 建立连接的网络包来做分析，从抓包结果来看，整个 MySQL 的连接过程可以分为两部分：</p>
-<p><img src="/blog/images/pasted-40.png" alt="upload successful">  </p>
+ <img src="/blog/images/pasted-40.png" width = "100%" height = "100%" align=center /> 
+
 <ul>
 <li><p><strong>第一部分是前三个数据包</strong></p>
 <p>第一个数据包是客户端向服务端发送的一个 SYN 包，</p>
@@ -139,7 +141,8 @@
 <li>当队列中的任务堆积满了的时候，则继续创建线程，直到达到 maxThreadCount；</li>
 <li>当线程数达到 maxTheadCount 时还有新的任务提交，那么我们就不得不将它们丢弃了。</li>
 </ul>
-<p><img src="/blog/images/pasted-41.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-41.png" width = "100%" height = "100%" align=center />
+
 <p>这个任务处理流程看似简单，实际上有很多坑，你在使用的时候一定要注意。</p>
 <p><strong>首先，</strong> JDK 实现的这个线程池优 <strong>先把任务放入队列暂存起来，而不是创建更多的线程</strong> ，它比较适用于执行 CPU 密集型的任务，也就是需要执行大量 CPU 运算的任务。这是为什么呢？因为执行 CPU 密集型的任务时 CPU 比较繁忙，因此只需要创建和 CPU 核数相当的线程就好了，多了反而会造成线程上下文切换，降低任务执行效率。所以当当前线程数超过核心线程数时，线程池不会增加线程，而是放在队列里等待核心线程空闲下来。</p>
 <p>但是，我们平时开发的 Web 系统通常都有大量的 IO 操作，比方说查询数据库、查询缓存等等。任务在执行 IO 操作的时候 CPU 就空闲了下来，这时如果增加执行任务的线程数而不是把任务暂存在队列中，就可以在单位时间内执行更多的任务，大大提高了任务执行的吞吐量。所以你看 Tomcat 使用的线程池就不是 JDK 原生的线程池，而是做了一些改造，当线程数超过 coreThreadCount 之后会优先创建线程，直到线程数到达 maxThreadCount，这样就比较适合于 Web 系统大量 IO 操作的场景了，你在实际运用过程中也可以参考借鉴。</p>

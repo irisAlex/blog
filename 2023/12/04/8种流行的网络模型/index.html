@@ -71,49 +71,55 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h3 id="最流行的-8-种网路协议"><a href="#最流行的-8-种网路协议" class="headerlink" title="最流行的 8 种网路协议"></a>最流行的 8 种网路协议</h3><p>目前网络上最流行的就是以下 8种网路模型。下面就一一为大家详解介绍一下这8种模型的用法与意义。<br><img src="/blog/images/pasted-58.png" alt="upload successful">  </p>
+        <h3 id="最流行的-8-种网路协议"><a href="#最流行的-8-种网路协议" class="headerlink" title="最流行的 8 种网路协议"></a>最流行的 8 种网路协议</h3><p>目前网络上最流行的就是以下 8种网路模型。下面就一一为大家详解介绍一下这8种模型的用法与意义。</p>
+ <img src="/blog/images/image.png" width = "100%" height = "100%" align=center />
+ 
 <p>让我们开始吧</p>
-<p><img src="/blog/images/pasted-59.png" alt="upload successful"></p>
-<h4 id="http"><a href="#http" class="headerlink" title="http"></a>http</h4><p><img src="/blog/images/pasted-60.png" alt="upload successful"> </p>
-<p> 首先是http , 它是 web 的支柱， http 使用请求 - 响应的模型。 </p>
-<p><img src="/blog/images/pasted-67.png" alt="upload successful"> </p>
-<p>客户端向服务器发送请求，包括 （图片，页面，api 数据等资源）<br>服务器返回带有 code 码的资源信息  </p>
-<p><img src="/blog/images/pasted-68.png" alt="upload successful"> </p>
-<p>信息包括 </p>
-<p><img src="/blog/images/pasted-70.png" alt="upload successful">  等</p>
-<p>成功以后返回 200 码。</p>
-<p><img src="/blog/images/pasted-73.png" alt="upload successful"> </p>
-<p>http 有 4种模型 分别是 </p>
-<p><img src="/blog/images/pasted-75.png" alt="upload successful"> </p>
-<ul>
-<li><p>POST </p>
-<p>  一般在创建资源的时候使用</p>
-</li>
-<li><p>GET<br>  在获取资源的时候使用</p>
-</li>
-<li><p>PUT </p>
-<p>  在更新资源的时候使用</p>
-</li>
-<li><p>DELETE  </p>
-<p>  在删除资源的时候使用</p>
-</li>
-</ul>
-<h4 id="https"><a href="#https" class="headerlink" title="https"></a>https</h4><p>   https 是基于 http + tls 传输安全性协议 添加的加密协议。</p>
-<p><img src="/blog/images/pasted-76.png" alt="upload successful"><br>首先 http 通过 tcp 建立链接，然后将彼此的公钥发送给对方，客户端通过对方传过来的公钥加密session key 然后发送到服务器，服务器解密 session key 然后通过 session key 加密的数据来进行数据传输</p>
-<p><img src="/blog/images/pasted-77.png" alt="upload successful"> </p>
-<p>https 通过 加密链接保证了数据的安全性 </p>
-<p><img src="/blog/images/pasted-80.png" alt="upload successful"><br>这种加密方式在互联网上可以保证数据数据的机密性。可以防止被黑客在中途截取数据<br>即使黑客拿到数据以后因为不知道加密的 session key 是什么所以即使拿到数据也是一堆 乱码。毫无意义。</p>
-<p><img src="/blog/images/pasted-81.png" alt="upload successful"> </p>
-<h4 id="http3"><a href="#http3" class="headerlink" title="http3"></a>http3</h4><p>http3 旨在 提高传输的速度与安全性。 修复以前版本中一些棘手的问题。<br>http 3 使用了 quic   基于 udp 协议而不是 tcp 协议来链接。 quic 可以最大限度的减少智能手机上网络切换的延迟问题。<br><img src="/blog/images/pasted-82.png" alt="upload successful"> </p>
-<p>quic 也消除了对头柱塞，即一个数据包丢失导致后边的数据包的流停滞问题。</p>
-<p><img src="/blog/images/pasted-83.png" alt="upload successful"> </p>
-<h4 id="web-socket"><a href="#web-socket" class="headerlink" title="web socket"></a>web socket</h4><p>在单个 tcp 中提供全双工的通信。<br><img src="/blog/images/pasted-84.png" alt="upload successful"><br>web socket 可以实现无缝实时的协作与实时数据流 </p>
-<p><img src="/blog/images/pasted-85.png" alt="upload successful"> </p>
-<p>初始的时候 ws 会重用 tcp 链接。 然后消息可以在最少的桢在俩个方向上流动。<br><img src="/blog/images/pasted-86.png" alt="upload successful"> </p>
-<p>ws 支持以非常低的开销立即发送小数据消息。非常适合 聊天，游戏，或实时更新的数据。 </p>
-<h4 id="tcp-udp"><a href="#tcp-udp" class="headerlink" title="tcp &#x2F; udp"></a>tcp &#x2F; udp</h4><p>tcp &#x2F; upd   是我们经常用的网络层传输协议。</p>
-<p><img src="/blog/images/pasted-87.png" alt="upload successful"> </p>
+ <img src="/blog/images/pasted-59.png" width = "100%" height = "100%" align=center />
 
+<h4 id="http-协议"><a href="#http-协议" class="headerlink" title="http 协议"></a>http 协议</h4> <img src="/blog/images/pasted-60.png" width = "100%" height = "100%" align=center />
+
+<p><strong>首先是http , 它是 web 的支柱， http 使用请求 - 响应的模型。</strong> </p>
+ <img src="/blog/images/pasted-67.png" width = "100%" height = "100%" align=center />
+
+<p><strong>客户端向服务器发送请求，包括 （图片，页面，api 数据等资源）<br>服务器返回带有 code 码的资源信息</strong></p>
+ <img src="/blog/images/pasted-68.png" width = "100%" height = "100%" align=center />
+
+<p>信息包括 </p>
+<p> <img src="/blog/images/pasted-70.png" width = "100%" height = "100%" align=center />等</p>
+<p><strong>成功以后返回 200 码。</strong><br> <img src="/blog/images/pasted-73.png" width = "100%" height = "100%" align=center /></p>
+<p> <strong>http 有 4种模型 分别是</strong><br> <img src="/blog/images/pasted-75.png" width = "100%" height = "100%" align=center /></p>
+<ul>
+<li><strong>POST</strong><br>  <strong>一般在创建资源的时候使用</strong></li>
+<li><strong>GET</strong><br>  <strong>在获取资源的时候使用</strong></li>
+<li><strong>PUT</strong><br>  <strong>在更新资源的时候使用</strong></li>
+<li><strong>DELETE</strong><br>  <strong>在删除资源的时候使用</strong></li>
+</ul>
+<h4 id="https协议"><a href="#https协议" class="headerlink" title="https协议"></a>https协议</h4><p><strong>https 是基于 http + tls 传输安全性协议 添加的加密协议。</strong><br> <img src="/blog/images/pasted-76.png" width = "100%" height = "100%" align=center /></p>
+<p>首先 http 通过 tcp 建立链接，然后将彼此的公钥发送给对方，客户端通过对方传过来的公钥加密session key 然后发送到服务器，服务器解密 session key 然后通过 session key 加密的数据来进行数据传输</p>
+ <img src="/blog/images/pasted-77.png" width = "100%" height = "100%" align=center />
+
+<p>https 通过 加密链接保证了数据的安全性 </p>
+ <img src="/blog/images/pasted-80.png" width = "100%" height = "100%" align=center />
+![upload successful](/images/pasted-80.png) 
+
+<p>这种加密方式在互联网上可以保证数据数据的机密性。可以防止被黑客在中途截取数据<br>即使黑客拿到数据以后因为不知道加密的 session key 是什么所以即使拿到数据也是一堆 乱码。毫无意义。</p>
+ <img src="/blog/images/pasted-81.png" width = "100%" height = "100%" align=center />
+
+<h4 id="http3-协议"><a href="#http3-协议" class="headerlink" title="http3 协议"></a>http3 协议</h4><p>http3 旨在 提高传输的速度与安全性。 修复以前版本中一些棘手的问题。<br>http 3 使用了 quic   基于 udp 协议而不是 tcp 协议来链接。 quic 可以最大限度的减少智能手机上网络切换的延迟问题。<br> <img src="/blog/images/pasted-82.png" width = "100%" height = "100%" align=center /></p>
+<p>quic 也消除了对头柱塞，即一个数据包丢失导致后边的数据包的流停滞问题。</p>
+ <img src="/blog/images/pasted-83.png" width = "100%" height = "100%" align=center />
+ 
+<h4 id="web-socket-协议"><a href="#web-socket-协议" class="headerlink" title="web socket 协议"></a>web socket 协议</h4><p>在单个 tcp 中提供全双工的通信。<br> <img src="/blog/images/pasted-84.png" width = "100%" height = "100%" align=center /></p>
+<p>web socket 可以实现无缝实时的协作与实时数据流 </p>
+ <img src="/blog/images/pasted-85.png" width = "100%" height = "100%" align=center />
+ 
+<p>初始的时候 ws 会重用 tcp 链接。 然后消息可以在最少的桢在俩个方向上流动。</p>
+ <img src="/blog/images/pasted-86.png" width = "100%" height = "100%" align=center />
+
+<p>ws 支持以非常低的开销立即发送小数据消息。非常适合 聊天，游戏，或实时更新的数据。 </p>
+<h4 id="tcp-udp-协议"><a href="#tcp-udp-协议" class="headerlink" title="tcp &#x2F; udp 协议"></a>tcp &#x2F; udp 协议</h4><p>tcp &#x2F; upd   是我们经常用的网络层传输协议。</p>
+ <img src="/blog/images/pasted-87.png" width = "100%" height = "100%" align=center />
       
     </div>
     <footer class="article-footer">
